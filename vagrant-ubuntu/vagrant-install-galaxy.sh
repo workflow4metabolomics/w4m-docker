@@ -12,7 +12,7 @@ else
 	# Install Galaxy
 	git clone https://github.com/galaxyproject/galaxy
 	cd galaxy
-	git checkout -b master origin/master
+	git checkout -b release_15.10 origin/release_15.10
 
 	# Write .ini
 	cp /vagrant/galaxy.ini config/.
