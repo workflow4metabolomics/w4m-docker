@@ -17,3 +17,10 @@ else
 	# Write .ini
 	cp /vagrant/galaxy.ini config/.
 fi
+
+
+# Run Galaxy
+./run.sh --daemon
+
+
+		
