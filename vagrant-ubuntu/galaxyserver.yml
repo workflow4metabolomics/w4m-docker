@@ -1,0 +1,26 @@
+- hosts: all
+  vars:
+    galaxy_server_dir: /opt/galaxy/server
+    galaxy_config_dir: /opt/galaxy/config
+    galaxy_mutable_config_dir: /var/opt/galaxy/config
+    galaxy_mutable_data_dir: /var/opt/galaxy/data
+    galaxy_repo: https://bitbucket.org/galaxy/galaxy-central/
+    galaxy_changeset_id: tip
+  pre_tasks:
+    - name: Install Galaxy prerequisites
+      apt: pkg={{ item }} state=installed
+      sudo: yes
+      when: ansible_os_family == 'Debian'
+      with_items:
+        - mercurial
+        - python-virtualenv
+    - name: Install Galaxy prerequisites
+      yum: pkg={{ item }} state=installed
+      sudo: yes
+      when: ansible_os_family == 'RedHat'
+      with_items:
+        - mercurial
+        - python-virtualenv
+  roles:
+    - role: ../ansible-galaxy
+      sudo: yes
