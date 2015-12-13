@@ -1,13 +1,22 @@
 - hosts: all
   vars:
-    galaxy_server_dir: /opt/galaxy/server
+#galaxy_server_dir: "{{ ansible_env.HOME }}/galaxy"
+    galaxy_server_dir: "/home/vagrant/galaxy"
     galaxy_vcs: git
+    galaxy_fetch_eggs: no
+    galaxy_manage_static_setup: yes
+    galaxy_manage_mutable_setup: no
+    galaxy_manage_database: no
+    galaxy_fetch_dependencies: no
 #    galaxy_config_dir: /opt/galaxy/config
 #    galaxy_mutable_config_dir: /var/opt/galaxy/config
 #    galaxy_mutable_data_dir: /var/opt/galaxy/data
 #    galaxy_repo: https://bitbucket.org/galaxy/galaxy-central/
 #    galaxy_repo: https://github.com/galaxyproject/galaxy
     galaxy_changeset_id: release_15.10
+    galaxy_config:
+      "server:main":
+        "host": "0.0.0.0"
   pre_tasks:
     - name: Install Debian prerequisites
       apt: pkg={{ item }} state=installed
@@ -25,4 +34,4 @@
         - python-virtualenv
   roles:
     - role: ../ansible-galaxy
-      sudo: yes
+      sudo: no 

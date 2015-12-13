@@ -71,7 +71,6 @@ Vagrant.configure(2) do |config|
 	#   sudo apt-get install -y apache2
 	# SHELL
 
-# Can not make this ansible role work. Galaxy must be run manually, but when it is done the server is unreachable from outside the virtual machine (i.e.: server is not responding when contacted on http://localhost:7070 from the host.
 	config.vm.provision "ansible" do |ansible|
 		ansible.playbook = "galaxyserver.yml"	
 		ansible.sudo = true
