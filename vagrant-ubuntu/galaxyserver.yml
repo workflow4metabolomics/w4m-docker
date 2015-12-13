@@ -3,11 +3,11 @@
 #galaxy_server_dir: "{{ ansible_env.HOME }}/galaxy"
     galaxy_server_dir: "/home/vagrant/galaxy"
     galaxy_vcs: git
-    galaxy_fetch_eggs: no
+    galaxy_fetch_dependencies: yes
+    galaxy_fetch_eggs: yes
     galaxy_manage_static_setup: yes
     galaxy_manage_mutable_setup: no
     galaxy_manage_database: no
-    galaxy_fetch_dependencies: no
 #    galaxy_config_dir: /opt/galaxy/config
 #    galaxy_mutable_config_dir: /var/opt/galaxy/config
 #    galaxy_mutable_data_dir: /var/opt/galaxy/data
