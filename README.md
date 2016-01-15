@@ -5,6 +5,19 @@ This project has for aim to maintain a [Vagrant](https://www.vagrantup.com) file
 
 The Workflow4Metabolomics, W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
 
+Prerequisites
+-------------
+
+### Vagrant ###
+https://www.vagrantup.com/
+
+### Ansible ###
+From Python virtualenv
+``` {.bash}
+virtualenv .venv; . .venv/bin/activate
+pip install ansible
+```
+
 Running
 -------
 
@@ -12,6 +25,7 @@ Only the Ubuntu versioning is working, currently. The CentOS version does not wo
 
 From your host:
 ``` {.bash}
+. ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
 vagrant up
 vagrant ssh
@@ -29,4 +43,4 @@ sh manage_db.sh upgrade
 ./run.sh
 ```
 
-Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:7070/>.
