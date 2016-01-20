@@ -8,7 +8,7 @@ The Workflow4Metabolomics, W4M in short, is a French infrastructure offering sof
 
 What does it do?
 ----------------
-1. Create a virtual machine (Vagrant)
+1. Create a virtual machine (Vagrant and https://github.com/pierrickrogermele/w4m-vm)
 2. Install Galaxy (https://github.com/galaxyproject/ansible-galaxy)
 3. Start Galaxy 
 4. Install "ToolSheded" W4M Tools in Galaxy (https://github.com/galaxyproject/ansible-galaxy-tools and http://workflow4metabolomics.org/)
