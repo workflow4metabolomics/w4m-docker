@@ -1,3 +1,9 @@
 [submodule "ansible-galaxy"]
 	path = ansible-galaxy
 	url = ../ansible-galaxy
+[submodule "vagrant-ubuntu/roles/ansible-galaxy-tools"]
+	path = vagrant-ubuntu/roles/ansible-galaxy-tools
+	url = git@github.com:galaxyproject/ansible-galaxy-tools.git
+[submodule "vagrant-ubuntu/roles/ansible-galaxy"]
+	path = vagrant-ubuntu/roles/ansible-galaxy
+	url = git@github.com:galaxyproject/ansible-galaxy.git
