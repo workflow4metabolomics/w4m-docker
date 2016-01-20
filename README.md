@@ -10,8 +10,9 @@ What does it do?
 ----------------
 1. Create a virtual machine (Vagrant)
 2. Install Galaxy (https://github.com/galaxyproject/ansible-galaxy)
-3. Run Galaxy (https://github.com/galaxyproject/ansible-galaxy)
+3. Start Galaxy 
 4. Install "ToolSheded" W4M Tools in Galaxy (https://github.com/galaxyproject/ansible-galaxy-tools and http://workflow4metabolomics.org/)
+5. Restart Galaxy 
 
 
 
@@ -56,17 +57,13 @@ vagrant up
 vagrant ssh
 ```
 
-Now the virtual machine is created and running and you are logged in it. Start the Galaxy server:
-``` {.bash}
-cd galaxy
-./run.sh
-```
-
 1. When running for the first time, Galaxy will download and install all required Python modules (eggs), and then run all migration scripts.
 2. Then, the tools and their dependencies will be installed. But BEWARE, it's take a long long time to do that (1 or 2 hours). See During tools installations section.
 
 
 Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:7070/>.
+
+
 
 
 During tools installations
