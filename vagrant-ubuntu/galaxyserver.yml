@@ -46,5 +46,5 @@
         - m4    # Gi: I can't remember which tool need it -> TODO: build a Galaxy package
         - unzip # Gi: R need it to extract archive -> TODO: build a Galaxy package
   roles:
-    - role: ansible-galaxy
+    - role: ../ansible-galaxy
       sudo: no 
