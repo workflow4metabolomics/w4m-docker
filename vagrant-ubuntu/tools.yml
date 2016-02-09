@@ -8,4 +8,4 @@
       galaxy_tools_galaxy_instance_url: http://127.0.0.1:7070/
       galaxy_tools_api_key:  2daa2ba0ea25a8589f93af9df6976e3f
   roles:
-      - ../ansible-galaxy-tools
+      - ../roles/ansible-galaxy-tools
