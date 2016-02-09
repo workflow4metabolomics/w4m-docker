@@ -49,11 +49,20 @@ Running
 
 Only the Ubuntu versioning is working, currently. The CentOS version does not work, however this would be a priori the preferred choice for the Workflow4Metabolomics team.
 
-From your host:
+
+To get a production instance
 ``` {.bash}
 . ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
-vagrant up
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS.yaml' vagrant up
+vagrant ssh
+```
+
+To get a dev instance
+``` {.bash}
+. ~/.venv/bin/activate # optional
+cd vagrant-ubuntu
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS_dev.yaml' vagrant up
 vagrant ssh
 ```
 
