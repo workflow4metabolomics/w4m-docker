@@ -8,7 +8,7 @@ tools:
   owner: lecorguille
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
 - name: camera_combinexsannos
-  owner: lecorguille
+  owner: mmonsoor
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
 - name: camera_annotate
