@@ -18,6 +18,10 @@ tools:
 - name: package_r_xcms_1_44_0
   owner: lecorguille
   tool_shed_url: https://toolshed.g2.bx.psu.edu
+- name: xcms_summary
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
 - name: xcms_fillpeaks
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
