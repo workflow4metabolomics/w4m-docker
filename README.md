@@ -163,6 +163,8 @@ docker exec -i -t ed6031485d06 /bin/bash
 
 Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
 
+You can login as administrator of your Galaxy instance using the login admin@w4m.org and the password admin
+
 ##### For MacOS
 > Instead of "localhost", you need to use the Linux VM IP address.
 > ``` {.bash}
