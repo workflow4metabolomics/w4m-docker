@@ -6,7 +6,9 @@ FROM quay.io/bgruening/galaxy:16.01
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
-ENV GALAXY_CONFIG_BRAND Workflow4Metabolomics
+ENV GALAXY_CONFIG_BRAND Workflow4Metabolomics \
+GALAXY_DEFAULT_ADMIN_USER=admin@w4m.org \
+GALAXY_DEFAULT_ADMIN_PASSWORD=admin
 
 # Install Tools
 ADD tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
