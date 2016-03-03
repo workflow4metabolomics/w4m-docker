@@ -47,11 +47,20 @@ You can change the tools you want to be installed in tools-playbook-list/tool_li
 
 Only the Ubuntu versioning is working, currently. The CentOS version does not work, however this would be a priori the preferred choice for the Workflow4Metabolomics team.
 
-From your host:
+
+To get a production instance
 ``` {.bash}
 . ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
-vagrant up
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS.yaml' vagrant up
+vagrant ssh
+```
+
+To get a dev instance
+``` {.bash}
+. ~/.venv/bin/activate # optional
+cd vagrant-ubuntu
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS_dev.yaml' vagrant up
 vagrant ssh
 ```
 
@@ -63,6 +72,12 @@ Finally, you can connect to the Galaxy portal from a browser running on your hos
 ### During tools installations
 
 You can monitor the tools installation:
+<<<<<<< HEAD
+=======
+
+1. Register in <http://localhost:7070/> a user named admin@w4m.org
+2. Check the progression: Admin -> Monitor installing repositories
+>>>>>>> origin/master
 
 1. Register in <http://localhost:8080/> a user named admin@w4m.org
 2. Check the progression: Admin -> Monitor installing repositories
