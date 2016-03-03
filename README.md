@@ -102,6 +102,14 @@ Docker
 This Docker container is based on the quay.io/bgruening/galaxy:16.01 (https://github.com/bgruening/docker-galaxy-stable)
 Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
 
+### Current issue
+
+There is a problem during the library R mzR compilation. So we can say that this docker build is "**nonfunctional**" :(
+
+```
+make: *** [pwiz/data/common/Unimod.o] Error 4
+ERROR: compilation failed for package ‘mzR’
+```
 
 ### Prerequisites
 
@@ -150,7 +158,7 @@ docker images
 
 From your host:
 ``` {.bash}
-docker run -i -t -p 8080:80 galaxy-workflow4metabolomics /bin/bash
+docker run -i -t -p 8080:80 galaxy-workflow4metabolomics:2.5.0 /bin/bash
 ```
 
 From the Docker image:
@@ -162,7 +170,7 @@ startup
 
 From your host:
 ``` {.bash}
-docker run -d -p 8080:80 galaxy-workflow4metabolomics
+docker run -d -p 8080:80 galaxy-workflow4metabolomics:2.5.0
 
 # check that your docker is running
 docker ps
