@@ -122,8 +122,7 @@ You can change the tools you want to be installed in tools-playbook-list/docker-
 
 From your host:
 ``` {.bash}
-cd docker-ubuntu
-docker build -t galaxy-workflow4metabolomics .
+docker build -t galaxy-workflow4metabolomics:2.5.0 .
 
 # check your images
 docker images
@@ -144,7 +143,7 @@ From the Docker image:
 startup
 ```
 
-#### Daemon mode
+#### Detached/Daemon mode
 
 From your host:
 ``` {.bash}
@@ -163,7 +162,7 @@ docker exec -i -t ed6031485d06 /bin/bash
 
 Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
 
-You can login as administrator of your Galaxy instance using the login admin@w4m.org and the password admin
+You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
 
 ##### For MacOS
 > Instead of "localhost", you need to use the Linux VM IP address.
