@@ -1,5 +1,7 @@
 # This is just a sample file. For a fully documented version of this file, see
 # https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample
+api_key: admin
+galaxy_instance: http://127.0.0.1:8080/
 tools:
 - name: package_r_3_1_2
   owner: iuc
