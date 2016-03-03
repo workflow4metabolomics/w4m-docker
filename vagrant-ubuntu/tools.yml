@@ -3,7 +3,7 @@
   gather_facts: False
   connection: local
   vars:
-      # galaxy_tools_tool_list_file: files/tool_list.yaml
       galaxy_tools_tool_list: ../tools-playbook-list/tool_list_LCMS.yaml
+      galaxy_tools_api_key:  admin
   roles:
       - ../roles/ansible-galaxy-tools
