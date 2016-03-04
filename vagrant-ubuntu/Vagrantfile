@@ -15,6 +15,8 @@ Vagrant.configure(2) do |config|
 	    vb.gui = true
 	end
 	
+	config.vm.provision "docker"
+	
 	# Install Galaxy
 	# TODO make a script for starting/stoping Galaxy as a service/daemon. Start automatically at startup of vm.
 	config.vm.provision "ansible" do |ansible|
