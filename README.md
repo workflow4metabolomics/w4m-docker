@@ -72,12 +72,6 @@ Finally, you can connect to the Galaxy portal from a browser running on your hos
 ### During tools installations
 
 You can monitor the tools installation:
-<<<<<<< HEAD
-=======
-
-1. Register in <http://localhost:7070/> a user named admin@w4m.org
-2. Check the progression: Admin -> Monitor installing repositories
->>>>>>> origin/master
 
 1. Register in <http://localhost:8080/> a user named admin@w4m.org
 2. Check the progression: Admin -> Monitor installing repositories

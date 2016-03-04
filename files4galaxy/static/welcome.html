@@ -77,7 +77,7 @@
 	</div>
 
 	<div class="donemessagelarge">
-            <h1>version 2.1</h1>
+            <h1>version 2.5.x</h1>
 	    <strong>Publication:</strong> Franck Giacomoni, Gildas Le Corguillé, Misharl Monsoor, Marion Landi, Pierre Pericard, Mélanie Pétéra, Christophe Duperier, Marie Tremblay-Franco, Jean-François Martin, Daniel Jacob, Sophie Goulitquer, Etienne A. Thévenot and Christophe Caron (2014). <strong>Workflow4Metabolomics: A collaborative research infrastructure for computational metabolomics</strong>. Bioinformatics  <a href="http://bioinformatics.oxfordjournals.org/content/early/2014/12/18/bioinformatics.btu813" target="_blank">doi:10.1093/bioinformatics/btu813</a><br/><br/>
 	    <b>Help and support: <a href="mailto:support@workflow4metabolomics.org">support@workflow4metabolomics.org</a></b>
 	</div>
@@ -85,21 +85,19 @@
 
 	<div class="warningmessagelarge">
 
-		<h2>Warning</h2>
+		<h2>Information/Warning</h2>
 
 		<ul>
-		<li> 20-10-15: <strong><font color="red">-- FIXED--</font></strong> There was a bug with the CAMERA.annotate (generating a bad dataMatrix (intensities which don't match with the metabolites)). </li>
-
-
-        	<li> 09-10-2015: <strong><font color="red">-- FIXED --</font></strong> Some users reported a bug in <b>xcms.xcmsSet</b>. The preprocessing stops itself and doesn't import the whole dataset contained in the zip file <b>without warning</b>. But meanwhile, please check your samplemetadata dataset and the number of rows. Sorry about that!</li>
+			<li>11/03/16: Due to our cluster maintenance,the Galaxy W4M instance will be down from 2 days (From 11/03/16 to 13/03/16). </li>
+			<li>17/02/16: We have just write a tutorial in the Tutorials section below: Prepare your data to ease your data import.</li>
 		</ul> 
     </div>
 		<!--<ul>
 			<li>08/06/2015 - W4M is now in maintenance. You can face some access problems during reboots.</li>
 		</ul>
 	       29/07/2014 - Some scripts can be disrupted due to problems around R
-		<!--22/01/2015 - Maintenance: W4M will be stopped at <blink><strong><font color="red">17:00 TODAY</font></strong></blink> for an expected duration of 1 hour (Update of Galaxy: security and features)
-		<!--<ul>
+		22/01/2015 - Maintenance: W4M will be stopped at <blink><strong><font color="red">17:00 TODAY</font></strong></blink> for an expected duration of 1 hour (Update of Galaxy: security and features)
+		<ul>
 			<li> 10/02/2015 - W4M is now in maintenance. You can face some access problems since we are rebooting it. </li>
 			<li> 10/02/2015 - You may encounter some problems when re-running former datasets, the tools (specially around xcms and CAMERA) became obsolete. You can run new one in the tools panel. We will try to fix this issue as soon as possible. </li>
 		</ul>
@@ -119,10 +117,87 @@
 
 	<div id="W4M">
 		<div id="accordion">
-			<div class="collapseclose">
+			<!--<div class="collapseclose">-->
+			<div>
 				<h3>Changelog</h3>
+
+
 				<div id="changelog_accordion">
-						<h4>2.1 - 09/06/2015</h4>
+						<h4>2.5.0 - 24/02/2016</h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>LC-MS</h5>
+									<ul>
+										<li>BUGFIX - Preprocessing / xcms.* (2.0.5) CAMERA.* (2.1.3): <font color="red">better management of errors</font>. Datasets remained green although the process failed</li>
+										<li>UPDATE - Preprocessing / xcms.* (2.0.5) CAMERA.* (2.1.3): refactoring of internal management of inputs/outputs</li>
+										<li>UPDATE - Preprocessing / xcms.* (2.0.5) CAMERA.* (2.1.3): refactoring to feed the new summary tool</li>
+										<li>BUGFIX/IMPROVEMENT</font> - Preprocessing / xcms.xcmsSet (2.0.7): <font color="red">New checking steps around the imported data</font> in order to raise explicte error message before or after launch XCMS: checking of bad characters in the filenames, checking of the XML integrity and checking of duplicates which can appear in the sample names during the XCMS process because of bad characters</li>
+										<li>BUGFIX/IMPROVEMENT</font> - Preprocessing / xcms.xcmsSet (2.0.7): <font color="red">New step to check and delete bad characters in the XML</font>: accented characters in the storage path of the mass spectrometer</li>
+										<li>BUGFIX - Preprocessing / xcms.retcor (2.0.5): some pdf remained empty even when the process succeed</li>
+										<li>BUGFIX - Preprocessing / CAMERA.annotate (2.1.3): the conversion into minutes of the retention time was applied to the diffreport outputs (several conditions)</li>
+										<li>IMPROVEMENT - Preprocessing / CAMERA.annotate (2.1.3): when there are several conditions, the tool will generate individual datasets (tsv, pdf) instead of a zip file. The usual png (eic, boxplot) will from now be integrated in two pdf.</li>
+										<li>BUGFIX - 18/01/16 - Preprocessing / xcms.xcmsSet: Some zip files were tag as "corrupt" by R. We have changed the extraction mode to deal with thoses cases.</li>
+										<li><font color="red">NEW</font> - Preprocessing / xcms.summary (1.0.0): Create a summary of XCMS and CAMERA analysis</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<h4>2.4.3 - 10/02/2016</h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>All workflows</h5>
+									<ul>
+										<li>UPDATE - 10/02/16 - Statistical Analysis / Multivariate (2.3.0) NEW FEATURES: Predictions now available (see the 'Samples to be tested' argument) OPLS(-DA): Predictive and Orthogonal VIP are now computed. Multiclass PLS-DA implemented. MINOR MODIFICATIONS Changes in color palette: black/grey colors for diagnostics and other colors for scores</li>
+										<li>BUGFIX - 10/02/16 - Normalisation / Batch_correction (2.0.2): all_loess_sample:  minor bug correction in the figure display (previously stopping in the case of missing 'pool' observations).</li>
+									</ul>
+								</li>
+								<li><h5>LC-MS</h5>
+									<ul>
+										<li>BUGFIX - 18/01/16 - Preprocessing / xcms.xcmsSet: Some zip files were tag as "corrupt" by R. We have changed the extraction mode to deal with thoses cases.</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<h4>2.4.0 - 04/12/2015</h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>LC-MS</h5>
+									<ul>
+										<li>NEW - Statitical Analysis / Biosigner: Molecular signature discovery from omics data</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<h4>2.3.5 - 30/10/2015</h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>LC-MS</h5>
+									<ul>
+										<li>NEW - 30/10/15 - Annotation / LC/MS matching: Matching of mz/rt values onto local reference compound database.</li>
+										<li>BUGFIX - 15/10/15 - Preprocessing / CAMERA.annotate: There was a bug with the CAMERA.annotate (generating a bad dataMatrix (intensities which don't match with the metabolites))</li>
+										<li>BUGFIX - 09/10/15 - Preprocessing / xcms.xcmsSet: Some users reported a bug in xcms.xcmsSet. The preprocessing stops itself and doesn't import the whole dataset contained in the zip file without warning. But meanwhile, please check your samplemetadata dataset and the number of rows. Sorry about that!</li>
+										<li>UPDATE - 30/09/15 - Statistical Analysis / Univariate (2.1.1) Internal handling of 'NA' p-values (e.g. when intensities are identical in all samples)</li>
+										<li>UPDATE - 30/09/15 - Statistical Analysis / Multivariate (2.2.4) Correction in the Galaxy wrapper (in the previous version, the number of predictive components was sometimes set to the maximum by mistake). The regression coefficients are now provided as a new column of the variableMetadata output</li>
+										<li>UPDATE - 22/09/15 - Statistical Analysis / Multivariate (2.2.3) The default number of permutations is set to 10 (instead of 100) as a compromise to enable both a quick computation and a first hint at model significance</li>
+									</ul>
+								</ul>
+						</div>
+						<h4>2.2.1 - 18/09/2015</h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>NMR</h5>
+									<ul>
+										<li>NEW - Annotation / NMR_Annotation: Annotation of complex mixture NMR spectra and metabolite proportion estimation</li>
+									</ul>
+								</li>
+								<li><h5>LC-MS</h5>
+									<ul>
+										<li>UPDATE - Statistical Analysis / Multivariate (2.2.2): A default of 100 permutations has been set in order to check for overfitting; in addition,'permutation', 'overview', and 'outlier' plots are now displayed by default. Classification is currently implemented for two-class responses only. dataMatrix is not modified by the tool, so it does not appear as an output files.Double cross-validation (advanced computational parameters): 'odd' now refers to train (instead to test) indices  </li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						<h4>2.1.0 - 02/06/2015</h4>
 						<div>
 							<ul class="changelog">
 								<li><h5>General</h5>
@@ -142,7 +217,7 @@
 								</li>
 							</ul>			
 						</div>
-						<h4>2.0 - 01/06/2015</h4>
+						<h4>2.0.0 - 01/06/2015</h4>
 						<div>
 							<ul class="changelog">
 								<li><h5>LC-MS</h5>
@@ -176,6 +251,53 @@
 				<h3>Tutorials</h3>
 				<div  id="tutorial_accordion">
 					
+					<h4>Prepare your data</h4>
+					<div>
+						<ul>
+							<li><h5>Data format</h5>
+								<ul>
+									The xcms package reads full-scan LC/MS data from AIA/ANDI format NetCDF, mzXML, and mzData files. All data to be analyzed by xcms must first be converted to one of those file formats. Software packages for many instruments are be able to export to NetCDF. For information about how to export to NetCDF, please consult the documentation that came with your instrument's software. The online help of most packages frequently use the terms \CDF" or \AIA" when referring to NetCDF format.  In addition to NetCDF, mzXML exporters for a number of instruments are also available <a href="http://sashimi.sourceforge.net/software_glossolalia.html" target="_blank">http://sashimi.sourceforge.net/software_glossolalia.html</a><br/>
+									<i>source: <a href="http://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcmsPreprocess.pdf" target="_blank">http://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcmsPreprocess.pdf</a></i>
+								</ul>
+							</li>
+							<li><h5>Data organization</h5>
+								<ul>
+									Your data must be segregated per condition in different folder<br/>
+									<i>Example:</i>
+									<ul>
+										<li>sacuri/
+											<ul>
+												<li>bio/
+													<ul>
+														<li>HU_neg_017.mzXML</li>
+														<li>HU_neg_028.mzXML</li>
+														<li>HU_neg_034.mzXML</li>
+													</ul>
+												</li>
+												<li>blank/
+													<ul>
+														<li>Blanc04.mzXML</li>
+														<li>Blanc06.mzXML</li>
+														<li>Blanc09.mzXML</li>
+													</ul>
+												</li>
+											</ul>
+										</li>
+									</ul>
+									<b>Advise:</b> avoid special characters in your filenames and path.
+								</ul>
+							</li>
+							<li><h5>Zip your data</h5>
+								<ul>
+									In order to keep the directory structure intact, we chose the usual Zip format.<br/><br/>
+									Unfortunatly, the zip utility available by default with Microsoft Windows produces some corrupted file if the size of your data is more than 4Go.<br/>
+									So if you get this error message after the upload of your data <span style="background: #f9c7c5">zipfile.BadZipfile: zipfiles that span multiple disks are not supported</span><br/>
+									<b>Our advice</b> is to use the file archiver <a href="http://www.7-zip.org/" target="_blank">7zip</a>
+								</ul>
+							</li>
+						</ul>
+					</div>
+
 					<h4>Upload datasets</h4>
 					<div>
 						<ul>
@@ -200,6 +322,7 @@
 										  <a href="W4M/galaxy_upload_less_2Go.vlc.mp4" target="_blank">[video]</a>
 									</video>
 								</ul>
+							</li>
 						</ul>
 					</div>
 				
