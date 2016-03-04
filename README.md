@@ -6,7 +6,12 @@ The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is 
 This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
 
-Vagrant
+So make your choice
+- Use [Vagrant](#headvagrant)
+- Use [Docker](#headdocker)
+
+
+<a id="headvagrant"></a>Vagrant
 -------
 
 ### What does it do?
@@ -88,7 +93,7 @@ sh manage_db.sh upgrade
 
 
 
-Docker
+<a id="headdocker"></a>Docker
 ------
 
 ### What is it?
@@ -99,6 +104,7 @@ Nested in this Docker image, the script [install_tools_wrapper.sh](https://githu
 ### Current issue
 
 There is a problem during the library R mzR compilation. So we can say that this docker build is "**nonfunctional**" :(
+See: https://support.bioconductor.org/p/73159/
 
 ```
 make: *** [pwiz/data/common/Unimod.o] Error 4
