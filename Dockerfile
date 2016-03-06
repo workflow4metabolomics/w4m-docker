@@ -34,7 +34,12 @@ RUN ansible-playbook galaxyserver.yml -c local
 # Clean up
 RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
 
-EXPOSE 8080
+EXPOSE :8080
+EXPOSE :80
+EXPOSE :21
+EXPOSE :8800
+EXPOSE :9002
 
 # Define Entry point script
-ENTRYPOINT ["/home/vagrant/galaxy/run.sh"]
+ENTRYPOINT ["/home/galaxy/run.sh"]
+#ENTRYPOINT ["/bin/ls"]
