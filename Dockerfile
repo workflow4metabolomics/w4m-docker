@@ -3,23 +3,15 @@ FROM ubuntu:14.04
 
 MAINTAINER Pierrick Roger (pierrick.roger@gmail.com)
 
-# Update package database
-RUN apt-get update
+# Update package database and add required dependencies.
+RUN apt-get update && apt-get install -y git gcc libgmp-dev libffi-dev libssl-dev make python python-dev python-setuptools wget
 
 # Install Ansible
-RUN apt-get install -y git
 RUN git clone git://github.com/ansible/ansible.git --recursive
 WORKDIR ./ansible
-RUN apt-get install -y python python-setuptools
-RUN apt-get install -y gcc
-RUN apt-get install -y python-dev
-RUN apt-get install -y libgmp-dev
 RUN easy_install pip
 RUN pip install paramiko PyYAML Jinja2 httplib2 six
-RUN apt-get install -y libffi-dev
-RUN apt-get install -y libssl-dev
 RUN pip install 'requests[security]'
-RUN apt-get install -y make
 RUN make all install
 RUN ansible --version
 RUN mkdir /etc/ansible
