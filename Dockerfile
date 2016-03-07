@@ -11,7 +11,8 @@ RUN wget https://github.com/ansible/ansible/releases/download/v2.0.0.1-1/ansible
     && tar -xf ansible-2.0.0.1.tar.gz && mv ansible-2.0.0.1 ansible
 WORKDIR ./ansible
 RUN easy_install pip
-RUN pip install paramiko PyYAML Jinja2 httplib2 six
+#RUN pip install paramiko PyYAML Jinja2 httplib2 six
+RUN pip install PyYAML Jinja2 httplib2 six
 RUN pip install 'requests[security]'
 RUN make all install
 RUN ansible --version
