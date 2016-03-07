@@ -3,23 +3,17 @@ FROM ubuntu:14.04
 
 MAINTAINER Pierrick Roger (pierrick.roger@gmail.com)
 
-# Update package database
-RUN apt-get update
+# Update package database and add required dependencies.
+RUN apt-get update && apt-get install -y git gcc libgmp-dev libffi-dev libssl-dev make python python-dev python-setuptools wget
 
 # Install Ansible
-RUN apt-get install -y git
-RUN git clone git://github.com/ansible/ansible.git --recursive
+RUN wget https://github.com/ansible/ansible/releases/download/v2.0.0.1-1/ansible-2.0.0.1.tar.gz \
+    && tar -xf ansible-2.0.0.1.tar.gz && mv ansible-2.0.0.1 ansible
 WORKDIR ./ansible
-RUN apt-get install -y python python-setuptools
-RUN apt-get install -y gcc
-RUN apt-get install -y python-dev
-RUN apt-get install -y libgmp-dev
 RUN easy_install pip
-RUN pip install paramiko PyYAML Jinja2 httplib2 six
-RUN apt-get install -y libffi-dev
-RUN apt-get install -y libssl-dev
+#RUN pip install paramiko PyYAML Jinja2 httplib2 six
+RUN pip install PyYAML Jinja2 httplib2 six
 RUN pip install 'requests[security]'
-RUN apt-get install -y make
 RUN make all install
 RUN ansible --version
 RUN mkdir /etc/ansible
@@ -32,7 +26,7 @@ WORKDIR /files/galaxy-ubuntu
 RUN ansible-playbook galaxyserver.yml -c local
 
 # Clean up
-RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
+RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/* /ansible /files/ansible-galaxy
 
 EXPOSE :8080
 #EXPOSE :80
