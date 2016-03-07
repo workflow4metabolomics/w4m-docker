@@ -26,7 +26,7 @@ WORKDIR /files/galaxy-ubuntu
 RUN ansible-playbook galaxyserver.yml -c local
 
 # Clean up
-RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/*
+RUN apt-get clean && apt-get autoremove -y && rm -rf /var/lib/{apt,dpkg,cache,log}/ /tmp/* /var/tmp/* /ansible /files/ansible-galaxy
 
 EXPOSE :8080
 EXPOSE :80
