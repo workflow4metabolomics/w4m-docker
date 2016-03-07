@@ -41,5 +41,5 @@ EXPOSE :8800
 EXPOSE :9002
 
 # Define Entry point script
-ENTRYPOINT ["/home/galaxy/run.sh"]
+ENTRYPOINT ["/home/vagrant/galaxy/run.sh"]
 #ENTRYPOINT ["/bin/ls"]
