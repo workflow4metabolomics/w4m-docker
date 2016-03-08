@@ -15,10 +15,17 @@
 #    galaxy_mutable_data_dir: /var/opt/galaxy/data
 #    galaxy_repo: https://bitbucket.org/galaxy/galaxy-central/
 #    galaxy_repo: https://github.com/galaxyproject/galaxy
-    galaxy_changeset_id: release_15.10
+    galaxy_changeset_id: release_16.01
     galaxy_config:
       "server:main":
         "host": "0.0.0.0"
+      "app:main":
+        job_working_directory: "{{ galaxy_config_dir }}/job_working_directory"
+        tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_shed_tool_conf_file }}"
+        tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
+        master_api_key: "admin"
+        tool_dependency_dir: "{{ galaxy_server_dir }}/../shed_tools_deps"
+        admin_users: "admin@w4m.org"
   pre_tasks:
     - name: Install Debian prerequisites
       apt: pkg={{ item }} state=installed
@@ -27,6 +34,8 @@
       with_items:
         - git
         - python-virtualenv
+        - m4    # Gi: I can't remember which tool need it -> TODO: build a Galaxy package
+        - unzip # Gi: R need it to extract archive -> TODO: build a Galaxy package
     - name: Install RedHat prerequisites
       yum: pkg={{ item }} state=installed
       sudo: yes
@@ -34,6 +43,8 @@
       with_items:
         - git
         - python-virtualenv
+        - m4    # Gi: I can't remember which tool need it -> TODO: build a Galaxy package
+        - unzip # Gi: R need it to extract archive -> TODO: build a Galaxy package
   roles:
-    - role: ../ansible-galaxy
+    - role: ../roles/ansible-galaxy
       sudo: no 

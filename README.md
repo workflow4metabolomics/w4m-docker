@@ -1,13 +1,28 @@
-Virtual machines for the Workflow4Metabolomics
-==============================================
+Virtual machine for the Workflow4Metabolomics
+=============================================
 
-This project has for aim to maintain a set of virtual machine builders. These builders use technologies such as [Vagrant](https://www.vagrantup.com), [Ansible](https://www.ansible.com/) or [Docker](https://www.docker.com/). The resulting virtual machines are currently only able to run an empty instance of [Galaxy](https://galaxyproject.org), however in the near future they will be populated with Galaxy tools from the [Workflow4Metabolomics](http://workflow4metabolomics.org) in order to provide full virtual versions of the [Workflow4Metabolomics](http://workflow4metabolomics.org) that one could use for running locally as a development instance (i.e.: for developing new tools for the Workflow4Metabolomics, or maintaining/upgrading new ones) or as a production instance.
+The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
 
-The *Workflow4Metabolomics*, W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
+This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
-## Vagrant virtual machines
 
-The vagrant builder can be found inside `vagrant-ubuntu` (the `vagrant-centos` folder is not functinal yet). It uses the `ansible-galaxy` project that defines a general Ansible playbook to install Galaxy.
+So make your choice
+- Use [Vagrant](#headvagrant)
+- Use [Docker](#headdocker)
+
+
+<a id="headvagrant"></a>Vagrant
+-------
+
+### What does it do?
+
+1. Create a virtual machine (Vagrant and https://github.com/pierrickrogermele/w4m-vm)
+2. Install Galaxy (https://github.com/galaxyproject/ansible-galaxy)
+3. Start Galaxy 
+4. Install "ToolSheded" W4M Tools in Galaxy (https://github.com/galaxyproject/ansible-galaxy-tools and http://workflow4metabolomics.org/)
+5. Restart Galaxy 
+
+
 
 ### Prerequisites
 
@@ -15,57 +30,167 @@ The vagrant builder can be found inside `vagrant-ubuntu` (the `vagrant-centos` f
 https://www.vagrantup.com/
 
 #### Ansible
-From Python virtualenv
-```bash
-virtualenv .venv; . .venv/bin/activate
+``` {.bash}
+virtualenv .venv; . .venv/bin/activate # optional
 pip install ansible
 ```
+
+
+### Installation
+
+``` {.bash}
+git clone --recursive git@github.com:lecorguille/w4m-vm.git
+```
+
+
+### Settings
+
+You can change the tools you want to be installed in tools-playbook-list/tool_list_LCMS.yaml
+
 
 ### Running
 
 Only the Ubuntu versioning is working, currently. The CentOS version does not work, however this would be a priori the preferred choice for the Workflow4Metabolomics team.
 
-From your host:
-```bash
+
+To get a production instance
+``` {.bash}
 . ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
-vagrant up
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS.yaml' vagrant up
 vagrant ssh
 ```
 
-Now the virtual machine is created and running and you are logged in it. Start the Galaxy server:
-```bash
-cd galaxy
-./run.sh
+To get a dev instance
+``` {.bash}
+. ~/.venv/bin/activate # optional
+cd vagrant-ubuntu
+TOOL_LIST='../tools-playbook-list/tool_list_LCMS_dev.yaml' vagrant up
+vagrant ssh
 ```
-When running for the first time, Galaxy will download and install all required Python modules (eggs), and then run all migration scripts.
-If anything fails during the migration step, you'll have to rerun it using the following command:
-```bash
+
+1. When running for the first time, Galaxy will download and install all required Python modules (eggs), and then run all migration scripts.
+2. Then, the tools and their dependencies will be installed. But BEWARE, it's take a long long time to do that (1 or 2 hours). See During tools installations section.
+
+Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+
+### During tools installations
+
+You can monitor the tools installation:
+
+1. Register in <http://localhost:8080/> a user named admin@w4m.org
+2. Check the progression: Admin -> Monitor installing repositories
+
+### Troubleshooting
+
+* If anything fails during the migration step, you'll have to rerun it using the following command:
+``` {.bash}
 sh manage_db.sh upgrade
 ./run.sh
 ```
 
-Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:7070/>.
+* Sometimes, some dependencies installation fail. You can reinstall them using the graphic interface.
 
-## Docker container
 
-The docker file is located at the root of the project. We are not going to explain how to install and run Docker here, please refer to the general documentation of Docker.
-Do not forget that if you run under MacOS-X, since Docker only run exclusively on Linux, you'll have to run Docker inside a virtual machine running a Linux system. One solution is to use the docker-machine tool, which will make this almost transparent.
 
-To build the machine run from inside the root folder:
-```bash
-docker build -t galaxy .
+<a id="headdocker"></a>Docker
+------
+
+### What is it?
+
+This Docker container is based on the quay.io/bgruening/galaxy:16.01 (https://github.com/bgruening/docker-galaxy-stable)
+Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
+
+### Current issue
+
+There is a problem during the library R mzR compilation. So we can say that this docker build is "**nonfunctional**" :(
+See: https://support.bioconductor.org/p/73159/
+
+```
+make: *** [pwiz/data/common/Unimod.o] Error 4
+ERROR: compilation failed for package ‘mzR’
 ```
 
-Then to start the container:
-```bash
-docker run -p 8080:8080 galaxy
+### Prerequisites
+
+#### Docker
+https://www.docker.com
+
+##### For MacOS
+> Because MacOS can't launch Docker directly, you need to install the Docker Toolbox. It will launch a Linux VM to allow you to use Docker. 
+> https://docs.docker.com/engine/installation/mac/ 
+
+
+
+### Step 1: Building the Docker container
+
+#### Installation
+
+``` {.bash}
+git clone --recursive git@github.com:lecorguille/w4m-vm.git
 ```
 
-For MacOS-X, if you are using `docker-machine`, you need to open a tunnel from your host to the docker-machine in order to be able to access the Galaxy server. Run the following command, and let it open (i.e.: do not quit):
-``` bash
-docker-machine ssh default -L 8080:localhost:8080
-```
-Replace *default* with your docker-machine machine name.
 
-Now you should be able to open the Galaxy server in your browser: <http:\\localhost:8080>.
+#### Settings
+
+You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
+
+
+### The Running step
+
+##### For MacOS
+> Because MacOS can't launch Docker directly, you need to launch a Linux VM.
+> Launch the "[Docker Quickstart Terminal](https://docs.docker.com/engine/installation/mac/#from-the-docker-quickstart-terminal)" application
+
+
+From your host:
+``` {.bash}
+docker build -t galaxy-workflow4metabolomics:2.5.0 .
+
+# check your images
+docker images
+```
+
+
+### Step 2: Running the Docker container
+
+#### Interactive mode
+
+From your host:
+``` {.bash}
+docker run -i -t -p 8080:80 galaxy-workflow4metabolomics:2.5.0 /bin/bash
+```
+
+From the Docker image:
+``` {.bash}
+startup
+```
+
+#### Detached/Daemon mode
+
+From your host:
+``` {.bash}
+docker run -d -p 8080:80 galaxy-workflow4metabolomics:2.5.0
+
+# check that your docker is running
+docker ps
+
+# to get a ssh connection and use bash, you need your CONTAINER ID (`docker ps`)
+docker exec -i -t ed6031485d06 /bin/bash
+
+```
+
+
+### Step 3: Use Galaxy
+
+Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+
+You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
+
+##### For MacOS
+> Instead of "localhost", you need to use the Linux VM IP address.
+> ``` {.bash}
+> docker-machine ip default
+> ```
+
+
