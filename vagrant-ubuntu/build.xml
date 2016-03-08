@@ -1,0 +1,19 @@
+<project name="w4m.vm" default="dev">
+
+	<!-- DEV -->
+	<target name="dev">
+		<exec executable="vagrant">
+			<env key="TOOL_LIST" value="../tools-playbook-list/tool_list_LCMS_dev.yaml"/>
+			<arg value="up"/>
+		</exec>
+	</target>
+
+	<!-- PROD -->
+	<target name="prod">
+		<exec executable="vagrant">
+			<env key="TOOL_LIST" value="../tools-playbook-list/tool_list_LCMS.yaml"/>
+			<arg value="up"/>
+		</exec>
+	</target>
+
+</project>
