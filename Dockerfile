@@ -7,8 +7,7 @@ MAINTAINER Pierrick Roger (pierrick.roger@gmail.com)
 RUN apt-get update && apt-get install -y git gcc libgmp-dev libffi-dev libssl-dev make python python-dev python-setuptools wget
 
 # Install Ansible
-RUN wget https://github.com/ansible/ansible/releases/download/v2.0.0.1-1/ansible-2.0.0.1.tar.gz \
-    && tar -xf ansible-2.0.0.1.tar.gz && mv ansible-2.0.0.1 ansible
+RUN git clone --recursive -b v2.0.0.1-1 git://github.com/ansible/ansible.git
 WORKDIR ./ansible
 RUN easy_install pip
 #RUN pip install paramiko PyYAML Jinja2 httplib2 six
