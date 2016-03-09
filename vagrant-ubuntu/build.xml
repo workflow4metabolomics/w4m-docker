@@ -16,4 +16,12 @@
 		</exec>
 	</target>
 
+	<!-- CLEAN -->
+	<target name="clean">
+		<exec executable="vagrant">
+			<arg value="destroy"/>
+			<arg value="-f"/>
+		</exec>
+	</target>
+
 </project>
