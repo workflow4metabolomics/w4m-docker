@@ -160,6 +160,7 @@ docker images
 <a id="headdocker_step1"></a>
 ### Step 2: Running the Docker container
 
+If you have just build a docker image through the [Step 1](#headdocker_step2). Omit lecorguille/ in the docker image name
 
 #### Detached/Daemon mode
 
@@ -176,8 +177,6 @@ docker exec -i -t ed6031485d06 /bin/bash
 ```
 
 #### Interactive mode
-
-If you have just build a docker image through the [Step 1](#headdocker_step2). Omit lecorguille/ in the docker image name
 
 From your host:
 ``` {.bash}
