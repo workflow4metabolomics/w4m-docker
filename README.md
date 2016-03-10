@@ -11,7 +11,8 @@ So make your choice
 - Use [Docker](#headdocker)
 
 
-<a id="headvagrant"></a>Vagrant
+<a id="headvagrant"></a>
+Vagrant
 -------
 
 ### What does it do?
@@ -93,7 +94,8 @@ sh manage_db.sh upgrade
 
 
 
-<a id="headdocker"></a>Docker
+<a id="headdocker"></a>
+Docker
 ------
 
 ### What is it?
@@ -120,9 +122,13 @@ https://www.docker.com
 > Because MacOS can't launch Docker directly, you need to install the Docker Toolbox. It will launch a Linux VM to allow you to use Docker. 
 > https://docs.docker.com/engine/installation/mac/ 
 
+###Make a sub-choice:
+ - Use an existing image available on [Docker Hub](https://hub.docker.com/r/lecorguille/galaxy-workflow4metabolomics/) and jump to the [Step 2](#headdocker_step2)
+ - From this repository a custom docker image from the [Step 1](#headdocker_step1)
 
 
-### Step 1: Building the Docker container
+<a id="headdocker_step1"></a>
+### Step 1: Building a custom Docker container from this repository
 
 #### Installation
 
@@ -136,7 +142,7 @@ git clone --recursive git@github.com:lecorguille/w4m-vm.git
 You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
 
 
-### The Running step
+#### The Running step
 
 ##### For MacOS
 > Because MacOS can't launch Docker directly, you need to launch a Linux VM.
@@ -145,32 +151,22 @@ You can change the tools you want to be installed in tools-playbook-list/docker-
 
 From your host:
 ``` {.bash}
-docker build -t galaxy-workflow4metabolomics:2.5.0 .
+docker build -t galaxy-workflow4metabolomics:0.0.1 .
 
 # check your images
 docker images
 ```
 
-
+<a id="headdocker_step1"></a>
 ### Step 2: Running the Docker container
 
-#### Interactive mode
-
-From your host:
-``` {.bash}
-docker run -i -t -p 8080:80 galaxy-workflow4metabolomics:2.5.0 /bin/bash
-```
-
-From the Docker image:
-``` {.bash}
-startup
-```
+If you have just build a docker image through the [Step 1](#headdocker_step2). Omit lecorguille/ in the docker image name
 
 #### Detached/Daemon mode
 
 From your host:
 ``` {.bash}
-docker run -d -p 8080:80 galaxy-workflow4metabolomics:2.5.0
+docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics:0.0.1
 
 # check that your docker is running
 docker ps
@@ -179,6 +175,19 @@ docker ps
 docker exec -i -t ed6031485d06 /bin/bash
 
 ```
+
+#### Interactive mode
+
+From your host:
+``` {.bash}
+docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics:0.0.1 /bin/bash
+```
+
+From the Docker image:
+``` {.bash}
+startup
+```
+
 
 
 ### Step 3: Use Galaxy
@@ -192,5 +201,6 @@ You can login as administrator of your Galaxy instance using the login admin@gal
 > ``` {.bash}
 > docker-machine ip default
 > ```
+
 
 
