@@ -16,6 +16,7 @@ Vagrant.configure(2) do |config|
 	    vb.gui = true
 	end
 	
+	# XXX Why is it needed ?	
 	config.vm.provision "docker"
 	
 	# Install Galaxy
@@ -32,6 +33,8 @@ Vagrant.configure(2) do |config|
 
 	# Start galaxy in daemon mode
 	config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
+
+	# TODO Make tool installation from toolshed an option
 
 	# Install Galaxy tools
 	config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"4096", run: "always"
