@@ -13,7 +13,6 @@ Vagrant.configure(2) do |config|
   # Set virtual memory
   config.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
-      vb.gui = true
   end
   
   # XXX Why is it needed ?  
