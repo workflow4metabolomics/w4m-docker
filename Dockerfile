@@ -2,7 +2,7 @@
 #
 # VERSION       0.0.2
 
-FROM quay.io/bgruening/galaxy:16.04
+FROM quay.io/bgruening/galaxy:16.01
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
