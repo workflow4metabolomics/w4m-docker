@@ -15,7 +15,7 @@
 #    galaxy_mutable_data_dir: /var/opt/galaxy/data
 #    galaxy_repo: https://bitbucket.org/galaxy/galaxy-central/
 #    galaxy_repo: https://github.com/galaxyproject/galaxy
-    galaxy_changeset_id: release_16.01
+    galaxy_changeset_id: release_16.04
     galaxy_config:
       "server:main":
         "host": "0.0.0.0"
@@ -24,8 +24,11 @@
         tool_config_file: "{{ galaxy_config_dir }}/tool_conf.xml,{{ galaxy_shed_tool_conf_file }}"
         tool_sheds_config_file: "{{ galaxy_config_dir }}/tool_sheds_conf.xml"
         master_api_key: "admin"
-        tool_dependency_dir: "{{ galaxy_server_dir }}/../shed_tools_deps"
+        tool_dependency_dir: "/deps"
         admin_users: "admin@w4m.org"
+        conda_auto_init: True
+        conda_auto_install: True
+        dependency_resolvers_config_file: "{{ galaxy_config_dir }}/dependency_resolvers_conf.xml"
   pre_tasks:
     - name: Install Debian prerequisites
       apt: pkg={{ item }} state=installed
