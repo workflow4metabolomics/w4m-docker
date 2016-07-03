@@ -83,15 +83,14 @@
 	</div>
  
 
-	<div class="warningmessagelarge">
+	<!--<div class="warningmessagelarge">
 
 		<h2>Information/Warning</h2>
 
 		<ul>
-			<li>11/03/16: Due to our cluster maintenance,the Galaxy W4M instance will be down from 2 days (From 11/03/16 to 13/03/16). </li>
-			<li>17/02/16: We have just write a tutorial in the Tutorials section below: Prepare your data to ease your data import.</li>
+			<li>18-05-16: We are presently facing an issue around the job submission. For you, it appears with this message: "The cluster DRM system terminated this job". We are investigating but meanwhile you can resubmit your jobs while crossing your fingers.</li>
 		</ul> 
-    </div>
+	</div>-->
 		<!--<ul>
 			<li>08/06/2015 - W4M is now in maintenance. You can face some access problems during reboots.</li>
 		</ul>
@@ -117,12 +116,27 @@
 
 	<div id="W4M">
 		<div id="accordion">
-			<!--<div class="collapseclose">-->
-			<div>
+			<div class="collapseclose">
+			<!--<div>-->
 				<h3>Changelog</h3>
 
 
 				<div id="changelog_accordion">
+
+						<h4>2.5.1 - 09/03/2016 </h4>
+						<div>
+							<ul class="changelog">
+								<li><h5>LC-MS and GC-MS</h5>
+									<ul>
+										<li>UPDATE/IMPROVEMENT - 09/03/16- Normalisation / Determine_batch_correction (2016-03-03): plot layout improvement</li>
+										<li>UPDATE/IMPROVEMENT - 09/03/16- Normalisation / Batch correction (2.0.3): plot layout improvement</li>
+										<li>UPDATE/- 09/03/16- Normalisation / Batch correction (2.0.3): Suppression of combined table for simca</li>
+										<li>UPDATE/IMPROVEMENT - 09/03/16- Normalisation / Batch correction (2.0.3): Addition of a new parameter "Null values"</li>
+									</ul>
+								</li>
+							</ul>
+						</div>
+						
 						<h4>2.5.0 - 24/02/2016</h4>
 						<div>
 							<ul class="changelog">
@@ -250,117 +264,16 @@
 			<div class="collapseclose">
 				<h3>Tutorials</h3>
 				<div  id="tutorial_accordion">
-					
-					<h4>Prepare your data</h4>
-					<div>
-						<ul>
-							<li><h5>Data format</h5>
-								<ul>
-									The xcms package reads full-scan LC/MS data from AIA/ANDI format NetCDF, mzXML, and mzData files. All data to be analyzed by xcms must first be converted to one of those file formats. Software packages for many instruments are be able to export to NetCDF. For information about how to export to NetCDF, please consult the documentation that came with your instrument's software. The online help of most packages frequently use the terms \CDF" or \AIA" when referring to NetCDF format.  In addition to NetCDF, mzXML exporters for a number of instruments are also available <a href="http://sashimi.sourceforge.net/software_glossolalia.html" target="_blank">http://sashimi.sourceforge.net/software_glossolalia.html</a><br/>
-									<i>source: <a href="http://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcmsPreprocess.pdf" target="_blank">http://bioconductor.org/packages/release/bioc/vignettes/xcms/inst/doc/xcmsPreprocess.pdf</a></i>
-								</ul>
-							</li>
-							<li><h5>Data organization</h5>
-								<ul>
-									Your data must be segregated per condition in different folder<br/>
-									<i>Example:</i>
-									<ul>
-										<li>sacuri/
-											<ul>
-												<li>bio/
-													<ul>
-														<li>HU_neg_017.mzXML</li>
-														<li>HU_neg_028.mzXML</li>
-														<li>HU_neg_034.mzXML</li>
-													</ul>
-												</li>
-												<li>blank/
-													<ul>
-														<li>Blanc04.mzXML</li>
-														<li>Blanc06.mzXML</li>
-														<li>Blanc09.mzXML</li>
-													</ul>
-												</li>
-											</ul>
-										</li>
-									</ul>
-									<b>Advise:</b> avoid special characters in your filenames and path.
-								</ul>
-							</li>
-							<li><h5>Zip your data</h5>
-								<ul>
-									In order to keep the directory structure intact, we chose the usual Zip format.<br/><br/>
-									Unfortunatly, the zip utility available by default with Microsoft Windows produces some corrupted file if the size of your data is more than 4Go.<br/>
-									So if you get this error message after the upload of your data <span style="background: #f9c7c5">zipfile.BadZipfile: zipfiles that span multiple disks are not supported</span><br/>
-									<b>Our advice</b> is to use the file archiver <a href="http://www.7-zip.org/" target="_blank">7zip</a>
-								</ul>
-							</li>
-						</ul>
-					</div>
+	                                <h4>HOW TO</h4>
+                                        	<div>
 
-					<h4>Upload datasets</h4>
-					<div>
-						<ul>
-							<li><h5>Import datatsets &gt; 2 Go</h5>
-								<ul>
-									<a href="http://application.sb-roscoff.fr/download/w4m/howto/galaxy_upload_up_2Go.pdf" target="_blank">[pdf extract from the video]</a>
-									<video style="align:center;max-width:1280px;width:95%;" controls="controls" scale="tofit" >
-										  <source src="W4M_video/galaxy_upload_up_2Go.vlc.mp4" type="video/mp4" />
-										  <!--<source src="video.webm" type="video/webm" />
-										  <source src="video.ogv" type="video/ogg" />-->
-										  <a href="W4M_video/galaxy_upload_up_2Go.vlc.mp4" target="_blank">[video]</a>
-									</video>
-								</ul>
-							</li>
-							<li><h5>Import datatsets &lt; 2 Go</h5>
-								<ul>
-									<a href="http://application.sb-roscoff.fr/download/w4m/howto/galaxy_upload_less_2Go.pdf" target="_blank">[pdf extract from the video]</a><br/>
-									<video style="align:center;max-width:1280px;width:95%;" controls="controls" scale="tofit" >
-										  <source src="W4M_video/galaxy_upload_less_2Go.vlc.mp4" type="video/mp4" />
-										  <!--<source src="video.webm" type="video/webm" />
-										  <source src="video.ogv" type="video/ogg" />-->
-										  <a href="W4M_video/galaxy_upload_less_2Go.vlc.mp4" target="_blank">[video]</a>
-									</video>
-								</ul>
-							</li>
-						</ul>
-					</div>
-				
-					<h4>Create workflows</h4>
-					<div><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToBuildAndConfigureAWorkflow_v02.pdf" target="_blank">[pdf]</a></div>
-				
-					<h4>Share datasets</h4>
-					<div><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToShareHistoriesAndWorkflows_v02.pdf" target="_blank">[pdf]</a></div>
-				
-					<h4>LC-MS GC-MS NMR</h4>
-					<div>See the Howto section of <a href="http://workflow4metabolomics.org/howto" target="_blank">http://workflow4metabolomics.org</a></div>
-					
-				</div>
-			</div>
-			<div class="collapseclose">
-				<h3>Past events</h3>
-			  	<div>
-				    	<ul>
-						<li>06/10/2014 - Summer school "Mass spectrometry and Metabolomics" (6-10 Oct. 2014) / Nice, France - <strong>a practical work on the Workflow4metabolomics Virtual Machine</strong></li>
-					    	<li>01/07/2014 - GCC2014 / Baltimore, USA - <strong>Poster: workflow4metabolomics.org, Galaxy and the metabolomics analysis Universe</strong> - <a href="140701_gcc2014-poster/GCC2014-workflow4metabo-1.02.pdf" target="_blank">pdf available</a></li>
-						<li>19/05/2014 - RFMF / Lyon, France - <strong>Workshop: Initiation au traitement et à l'Analyse des données métabolomiques</strong> - <a href="#" onclick="toogleDisplay('detail_rfmf_20140519');">Course materials available [EN]</a> 
-							<div id="detail_rfmf_20140519" style="display: none">
-								<hr />
-								<table width="600px">
-									<tr><th>Horaire</th><th>Title</th><th>Intervenants</th></tr>
-									<tr><td>10h05-10h10</td><td>Introduction / déroulement</td><td>F.Giacomoni</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_1_mth-ifb_rfmfWorkshop_Intro_atelier_rfmf.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>10h10-10h20</td><td>Infrastructure fédérative IFB-MTH</td><td>C.Caron</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_2_mth-ifb_rfmfWorkshop_ifb-mth-presentation-rfmf.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>10h20-11h00</td><td>Initiation à la plateforme web Galaxy</td><td>M.Monsoor, M.Landi, G.Le Corguillé</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_3_mth-ifb_rfmfWorkshop_initiation_galaxy_print.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>11h10-11h20</td><td>Présentation du workflow</td><td>F.Giacomoni, E.Thévenot</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_4_mth-ifb_rfmfWorkshop_workflow-presentation.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>11h20-11h40</td><td>TP 01 - preprocessing</td><td>S.Goulitquer, JF.Martin</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_5_mth-ifb_rfmfWorkshop_tp1-xcms.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>11h45-12h05</td><td>TP 02 - Analyses stats</td><td>M.Petera, E.Thévenot, M.Tremblay-Franco</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_6_mth-ifb_rfmfWorkshop_tp2-statistics.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>12h10-12h30</td><td>TP 03 - Annotation</td><td>F.Giacomoni, S.Goulitquer</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_7_mth-ifb_rfmfWorkshop_tp3_annotation.pdf" target="_blank">pdf</a></td></tr>
-									<tr><td>12h35-12h45</td><td>Perspectives</td><td>D.Jacob</td><td><a href="140519_mth-ifb_rfmfWorkshop_documents/140519_8_mth-ifb_rfmfWorkshop_perspectives.pdf" target="_blank">pdf</a></td></tr>
-								</table>
-								<hr />
-							</div>
-						</li>
-					</ul>
+
+<table style="width: 100%;" border="1" cellspacing="1" cellpadding="1"><thead><tr><th>CATEGORY</th><th>FIELD</th><th>Description</th><th>PDF</th></tr></thead><tbody><tr><td style="width: 150px;">Galaxy</td><td style="width: 150px;">&nbsp;</td><td style="width: 369px;">Prepare input datasets</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/aaeb31.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Galaxy</td><td style="width: 150px;">&nbsp;</td><td style="width: 369px;">Import datasets</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/8880e7.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Galaxy</td><td style="width: 150px;">&nbsp;</td><td style="width: 369px;">Cleanup datasets</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/f0fd7c.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Galaxy</td><td style="width: 150px;">&nbsp;</td><td style="width: 369px;">Build And Configure A Workflow</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/9bc79d.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Galaxy</td><td style="width: 150px;">&nbsp;</td><td style="width: 369px;">Share Histories And Workflows</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/8e8802.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Preprocessing</td><td style="width: 150px;">LC-MS</td><td style="width: 369px;">Perform Preprocessing using XCMS</td><td style="width: 100px;"><a href="http://abims.sb-roscoff.fr/mypydio/data/public/084ad1.php?dl=true">Download</a></td></tr><tr><td style="width: 150px;">Quality Control</td><td style="width: 150px;">Common</td><td style="width: 369px;">Format Data For Postprocessing</td><td style="width: 100px;"><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToFormatDataForPostprocessing_v02.pdf">Download</a></td></tr><tr><td style="width: 150px;">Batch correction</td><td style="width: 150px;">LC-MS and GC-MS</td><td style="width: 369px;">Perform Drift And Batch Correction</td><td style="width: 100px;"><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToPerformDriftAndBatchCorrection_v02.pdf">Download</a></td></tr><tr><td style="width: 150px;">Statistics</td><td style="width: 150px;">Common</td><td style="width: 369px;">Perform Univariate Analyzes</td><td style="width: 100px;"><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToPerformUnivariateAnalyzes_v02.pdf">Download</a></td></tr><tr><td style="width: 150px;">Statistics</td><td style="width: 150px;">Common</td><td style="width: 369px;">Perform Multivariate Analyzes</td><td style="width: 100px;"><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToPerformMultivariateAnalyzes_v02.pdf">Download</a></td></tr><tr><td style="width: 150px;">Annotation</td><td style="width: 150px;">LC-MS</td><td style="width: 369px;">Perform LCMS Annotations</td><td style="width: 100px;"><a href="http://web11.sb-roscoff.fr/download/w4m/howto/w4m_HowToPerformAnnotations_v05.pdf">Download</a></td></tr><tr><td style="width: 150px;">Annotation</td><td style="width: 150px;">GC-MS</td><td style="width: 369px;">Use NIST</td><td style="width: 100px;"><a href="http://application.sb-roscoff.fr/download/w4m/howto/w4m_HowToUseNIST_V01.pdf">Download</a></td></tr></tbody></table>
+						</div>
+					<h4>W4M courses 2015</h4>
+						<div>
+<table style="width: 100%;" border="1" cellspacing="1" cellpadding="1"><thead><tr><th scope="col">W4M courses 2015</th><th scope="col">Author(s)</th><th scope="col">PDF</th></tr></thead><tbody><tr><td>Course presentation</td><td>Christophe Caron, Franck Giacomoni</td><td><a href="/sites/workflow4metabolomics.org/files/files/00_course_presentation_fg-cc_20150918.pdf" target="_blank">Download</a></td></tr><tr><td>Initiation</td><td>Gildas Le Corguillé, Misharl Monsoor, Marion Landi</td><td><a href="/sites/workflow4metabolomics.org/files/files/galaxy-init-1.05_printable.pdf" target="_blank">Download</a></td></tr><tr><td>LC-MS -&nbsp;Pre-processing (xcms)</td><td>W4M Core Team</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_xcms_CAMERA_LC-MS.pdf" target="_blank">Download</a></td></tr><tr><td>MS data processing - Filtering and correcting data</td><td>W4M Core Team</td><td><a href="/sites/workflow4metabolomics.org/files/files/MS_data_processing.pdf" target="_blank">Download</a></td></tr><tr><td>Using&nbsp;Galaxy4Metabolomics -&nbsp;W4M table format for&nbsp;Galaxy</td><td>W4M Core Team</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_TableFormatForGalaxy_150908.pdf" target="_blank">Download</a></td></tr><tr><td>How to check the format&nbsp;of the 3 .tsv tables</td><td>Etienne Thévenot</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_HowToPerformStatisticalAnalysis_Appendix_CheckFormat_150923.pdf" target="_blank">Download</a></td></tr><tr><td>How to perform statistical analysis ? - Introduction</td><td>Etienne Thévenot, Marie Tremblay-Franco, Mélanie Pétéra, Gildas Le Corguillé</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_HowToPerformStatisticalAnalysis_1_Introduction_150923.pdf" target="_blank">Download</a></td></tr><tr><td>How to perform statistical analysis ? - Exploratory data analysis</td><td>Etienne Thévenot, Mélanie Pétéra, Jean-François Martin, Gildas Le Corguillé</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_HowToPerformStatisticalAnalysis_2_ExploratoryDataAnalysis_150923.pdf" target="_blank">Download</a></td></tr><tr><td>How to perform statistical analysis ? -&nbsp;PCA analysis and&nbsp;(O)PLS(-DA) modelling</td><td>Etienne Thévenot</td><td><a href="/sites/workflow4metabolomics.org/files/files/w4m_HowToPerformStatisticalAnalysis_4_MultivariateModelling_150923.pdf" target="_blank">Download</a></td></tr><tr><td>Les banques d'annotation - Annotation</td><td>Yann Guitton, Franck Giacomoni</td><td><a href="/sites/workflow4metabolomics.org/files/files/W4M_Annotation_banques_annotation.pdf" target="_blank">Download</a></td></tr></tbody></table><p>&nbsp;</p>				
+						</div>
 				</div>
 			</div>
 		</div>

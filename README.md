@@ -5,6 +5,15 @@ The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is 
 
 This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
+NOTICE 
+------
+
+We are currently pushing our developments on GitHub and on the ToolShed.. 
+[![bioconda-badge](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io) Since april of this year, we also try to prioritize the new system to deal with the dependencies : conda.
+This work is still in progress. Thus in those VM, you will only find those tools available on the TS and which use the conda dependencies.
+Sorry for that!
+
+
 
 So make your choice
 - Use [Vagrant](#headvagrant)
@@ -49,7 +58,7 @@ git clone --recursive git@github.com:lecorguille/w4m-vm.git
 You can change the tools you want to be installed in tools-playbook-list/tool_list_LCMS.yaml
 
 
-### Running
+### Running the build
 
 Only the Ubuntu versioning is working, currently. The CentOS version does not work, however this would be a priori the preferred choice for the Workflow4Metabolomics team.
 
@@ -59,7 +68,6 @@ To get a production instance
 . ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
 TOOL_LIST='../tools-playbook-list/tool_list_LCMS.yaml' vagrant up
-vagrant ssh
 ```
 
 To get a dev instance
@@ -67,13 +75,31 @@ To get a dev instance
 . ~/.venv/bin/activate # optional
 cd vagrant-ubuntu
 TOOL_LIST='../tools-playbook-list/tool_list_LCMS_dev.yaml' vagrant up
-vagrant ssh
 ```
 
 1. When running for the first time, Galaxy will download and install all required Python modules (eggs), and then run all migration scripts.
-2. Then, the tools and their dependencies will be installed. But BEWARE, it's take a long long time to do that (1 or 2 hours). See During tools installations section.
+2. Then, the tools will be installed.
+3. Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
+
+
+### Use Galaxy and the VM
+
+#### Web interface
 
 Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+
+#### SSH 
+
+To access through SSH to your image if you build it
+
+``` {.bash}
+vagrant ssh
+```
+
+Or if you get directly a .ova
+``` {.bash}
+ssh -Y vagrant@127.0.0.1 -p 2222
+```
 
 ### During tools installations
 
@@ -90,8 +116,6 @@ sh manage_db.sh upgrade
 ./run.sh
 ```
 
-* Sometimes, some dependencies installation fail. You can reinstall them using the graphic interface.
-
 
 
 <a id="headdocker"></a>
@@ -103,15 +127,6 @@ Docker
 This Docker container is based on the quay.io/bgruening/galaxy:16.01 (https://github.com/bgruening/docker-galaxy-stable)
 Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
 
-### Current issue
-
-There is a problem during the library R mzR compilation. So we can say that this docker build is "**nonfunctional**" :(
-See: https://support.bioconductor.org/p/73159/
-
-```
-make: *** [pwiz/data/common/Unimod.o] Error 4
-ERROR: compilation failed for package ‘mzR’
-```
 
 ### Prerequisites
 
@@ -151,7 +166,7 @@ You can change the tools you want to be installed in tools-playbook-list/docker-
 
 From your host:
 ``` {.bash}
-docker build -t galaxy-workflow4metabolomics:0.0.1 .
+docker build -t galaxy-workflow4metabolomics:2.5.1.0 .
 
 # check your images
 docker images
@@ -166,7 +181,7 @@ If you have just build a docker image through the [Step 1](#headdocker_step2). O
 
 From your host:
 ``` {.bash}
-docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics:0.0.1
+docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics:2.5.1.0
 
 # check that your docker is running
 docker ps
@@ -180,7 +195,7 @@ docker exec -i -t ed6031485d06 /bin/bash
 
 From your host:
 ``` {.bash}
-docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics:0.0.1 /bin/bash
+docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics:2.5.1.0 /bin/bash
 ```
 
 From the Docker image:
@@ -193,6 +208,8 @@ startup
 ### Step 3: Use Galaxy
 
 Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+
+Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
 
 You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
 

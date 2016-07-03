@@ -1,6 +1,6 @@
 # Galaxy - W4M
 #
-# VERSION       0.0.2
+# VERSION       2.5.1.0
 
 FROM quay.io/bgruening/galaxy:16.04
 
