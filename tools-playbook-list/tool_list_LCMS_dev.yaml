@@ -1,17 +1,12 @@
 # This is just a sample file. For a fully documented version of this file, see
 # https://github.com/galaxyproject/ansible-galaxy-tools/blob/master/files/tool_list.yaml.sample
 tools:
-- name: camera_combinexsannos
-  owner: mmonsoor
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
-  install_tool_dependencies: False
-- name: camera_annotate
+- name: xcms_xcmsset
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-- name: xcms_report
+- name: xcms_group
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
@@ -26,13 +21,18 @@ tools:
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-- name: xcms_group
+- name: camera_annotate
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-- name: xcms_xcmsset
+- name: xcms_report
   owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: camera_combinexsannos
+  owner: mmonsoor
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
@@ -42,8 +42,8 @@ tools:
   tool_panel_section_id: 'NMR-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-  - name: nmr_normalization
+- name: nmr_normalization
   owner: marie-tremblay-metatoul
-  tool_panel_section_id: 'NMR-preprocessing'
+  tool_panel_section_id: 'NMR-normalisation'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False

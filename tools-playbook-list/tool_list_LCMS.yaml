@@ -4,8 +4,23 @@ api_key: admin
 galaxy_instance: http://127.0.0.1:8080/
 tools:
 #LCMS-preprocessing
-- name: camera_combinexsannos
-  owner: mmonsoor
+- name: xcms_xcmsset
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_group
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_retcor
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_fillpeaks
+  owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
@@ -19,33 +34,18 @@ tools:
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-- name: xcms_fillpeaks
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  install_tool_dependencies: False
-- name: xcms_retcor
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  install_tool_dependencies: False
-- name: xcms_group
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  install_tool_dependencies: False
-- name: xcms_xcmsset
-  owner: lecorguille
+- name: camera_combinexsannos
+  owner: mmonsoor
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
 #LCMS-statistical_analysis
-- name: hca
+- name: anova
   owner: lecorguille
   tool_panel_section_id: 'LCMS-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-- name: anova
+- name: hca
   owner: lecorguille
   tool_panel_section_id: 'LCMS-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
@@ -56,8 +56,9 @@ tools:
   tool_panel_section_id: 'NMR-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
-  - name: nmr_normalization
+#NMR-normalisation
+- name: nmr_normalization
   owner: marie-tremblay-metatoul
-  tool_panel_section_id: 'NMR-preprocessing'
+  tool_panel_section_id: 'NMR-normalisation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
