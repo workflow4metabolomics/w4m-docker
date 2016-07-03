@@ -133,7 +133,7 @@ https://www.docker.com
 #### Installation
 
 ``` {.bash}
-git clone --recursive git@github.com:lecorguille/w4m-vm.git
+git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
 ```
 
 
