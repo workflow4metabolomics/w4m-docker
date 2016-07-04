@@ -36,6 +36,18 @@ tools:
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://testtoolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+#LCMS-statistical_analysis
+- name: anova
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#LCMS-annotation
+- name: probmetab
+  owner: mmonsoor
+  tool_panel_section_id: 'LCMS-annotation'
+  tool_shed_url: https://testtoolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
 #NMR-preprocessing
 - name: nmr_bucketing
   owner: marie-tremblay-metatoul

@@ -5,15 +5,27 @@ The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is 
 
 This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
+
 NOTICE 
 ------
 
 We are currently pushing our developments on GitHub and on the ToolShed.. 
-[![bioconda-badge](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io) Since april of this year, we also try to prioritize the new system to deal with the dependencies : conda.
-This work is still in progress. Thus in those VM, you will only find those tools available on the TS and which use the conda dependencies.
+Since april of this year, we also try to prioritize the new system to deal with the dependencies : conda.
+This work is still in progress. Thus in those VM, you will only find those tools available on the TS, which use the conda dependencies and pass Travis test.
 Sorry for that!
 
 
+Dependencies using Conda
+------------------------
+
+[![bioconda-badge](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io) 
+
+[Conda](http://conda.pydata.org/) is package manager that among many other things can be used to manage Python packages. It is becoming the default dependency manager within Galaxy.
+NOTE: that Galaxy will install the Conda dependencies just before the first run of the tool which need them (even the upload tool is concerned). So it may take a few minute before the job will be launched. The other time, they will start immediatly. 
+
+
+Which VM
+--------
 
 So make your choice
 - Use [Vagrant](#headvagrant)
@@ -124,8 +136,9 @@ Docker
 
 ### What is it?
 
-This Docker container is based on the quay.io/bgruening/galaxy:16.01 (https://github.com/bgruening/docker-galaxy-stable)
+This Docker container is based on the quay.io/bgruening/galaxy:16.04 (https://github.com/bgruening/docker-galaxy-stable) as a [Galaxy flavour](https://github.com/bgruening/docker-galaxy-stable/#list-of-galaxy-flavours)
 Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
+Get more documentations this Docker container on https://github.com/bgruening/docker-galaxy-stable: [Usage to save data on this read-only system](https://github.com/bgruening/docker-galaxy-stable/#usage), [using an external Slurm cluster](https://github.com/bgruening/docker-galaxy-stable/#using-an-external-slurm-cluster), ...
 
 
 ### Prerequisites
