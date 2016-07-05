@@ -179,7 +179,7 @@ You can change the tools you want to be installed in tools-playbook-list/docker-
 
 From your host:
 ``` {.bash}
-docker build -t galaxy-workflow4metabolomics:2.5.1.0 .
+docker build -t galaxy-workflow4metabolomics .
 
 # check your images
 docker images
@@ -194,7 +194,7 @@ If you have just build a docker image through the [Step 1](#headdocker_step2). O
 
 From your host:
 ``` {.bash}
-docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics:2.5.1.0
+docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics
 
 # check that your docker is running
 docker ps
@@ -208,7 +208,7 @@ docker exec -i -t ed6031485d06 /bin/bash
 
 From your host:
 ``` {.bash}
-docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics:2.5.1.0 /bin/bash
+docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics /bin/bash
 ```
 
 From the Docker image:
