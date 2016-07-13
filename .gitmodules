@@ -6,3 +6,7 @@
 	path = roles/ansible-galaxy-tools
 	url = https://github.com/galaxyproject/ansible-galaxy-tools.git
 	branch = master
+[submodule "galaxy_utils"]
+	path = galaxy_utils
+	url = https://github.com/lecorguille/galaxy_utils.git
+	barnch = master
