@@ -3,54 +3,54 @@
 
 Vagrant.configure(2) do |config|
 
-  # Box
-  config.vm.box = "ubuntu/trusty64"
-  config.vm.hostname = "w4m"
+	# Box
+	config.vm.box = "ubuntu/trusty64"
+	config.vm.hostname = "w4m"
 
-  # Network
-  config.vm.network :forwarded_port, guest: 8080, host: 8080
+	# Network
+	config.vm.network :forwarded_port, guest: 8080, host: 8080
 
-  # Set virtual memory
-  config.vm.provider "virtualbox" do |vb|
-      vb.memory = "2048"
-  end
-  
-  # XXX Why is it needed ?  
-  config.vm.provision "docker"
-  
-  # Install Galaxy
-  # TODO make a script for starting/stoping Galaxy as a service/daemon. Start automatically at startup of vm.
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "galaxyserver.yml" 
-    ansible.sudo = true
-  end
+	# Set virtual memory
+	config.vm.provider "virtualbox" do |vb|
+	    vb.memory = "2048"
+	end
+	
+	#config.vm.provision "docker"
+	
+	# Create a directory for conda deps closed to / to avoid placehold/placehold ...
+	config.vm.provision :shell, privileged: true, path: "vagrant-install-conda.sh"
 
-  config.vm.provision "file", source: "../files4galaxy/config/tool_conf.xml", destination: "galaxy/config/tool_conf.xml"
-  config.vm.provision "file", source: "../files4galaxy/config/tool_sheds_conf.xml", destination: "galaxy/config/tool_sheds_conf.xml"
-  config.vm.provision "file", source: "../files4galaxy/static/welcome.html", destination: "galaxy/static/welcome.html"
-  config.vm.provision "file", source: "../files4galaxy/static/W4M", destination: "galaxy/static/W4M"
+	# Install Galaxy
+	# TODO make a script for starting/stoping Galaxy as a service/daemon. Start automatically at startup of vm.
+	config.vm.provision "ansible" do |ansible|
+		ansible.playbook = "galaxyserver.yml"	
+		ansible.sudo = true
+	end
 
-  # Start galaxy in daemon mode
-  # TODO Why start Galaxy now if we restart it after tool installation ?
-  config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
+	config.vm.provision "file", source: "../files4galaxy/config/tool_conf.xml", destination: "galaxy/config/tool_conf.xml"
+	config.vm.provision "file", source: "../files4galaxy/config/tool_sheds_conf.xml", destination: "galaxy/config/tool_sheds_conf.xml"
+	config.vm.provision "file", source: "../files4galaxy/config/dependency_resolvers_conf.xml", destination: "galaxy/config/dependency_resolvers_conf.xml"
+	config.vm.provision "file", source: "../files4galaxy/static/welcome.html", destination: "galaxy/static/welcome.html"
+	config.vm.provision "file", source: "../files4galaxy/static/W4M", destination: "galaxy/static/W4M"
 
-  # TODO Make tool installation from toolshed an option
-
-  # Install Galaxy tools
+	# Start galaxy in daemon mode
   if ! ENV['TOOL_LIST'].nil?
-      config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"4096", run: "always"
-      config.vm.provision "ansible" do |ansible|
-        ansible.verbose = "v"
-        ansible.extra_vars = { 
-            "galaxy_tools_tool_list" => ENV['TOOL_LIST'], 
-          }
-        ansible.playbook = "tools.yml"  
-      end
-      config.vm.provision :shell, privileged: true, path: "swap_remove.sh", run: "always"
-      config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"1024", run: "always"
+	    config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
 
-      # Restart galaxy in daemon mode
-      config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"restart", run: "always"
+	    # Install Galaxy tools
+	    config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"4096", run: "always"
+	    config.vm.provision "ansible" do |ansible|
+		    ansible.verbose = "v"
+		    ansible.extra_vars = { 
+    	      "galaxy_tools_tool_list" => ENV['TOOL_LIST'], 
+    	    }
+		    ansible.playbook = "tools.yml"	
+	    end
+	    config.vm.provision :shell, privileged: true, path: "swap_remove.sh", run: "always"
+	    config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"1024", run: "always"
+
+	    # ReStart galaxy in daemon mode
+	    config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"restart", run: "always"
   end
-  
+
 end

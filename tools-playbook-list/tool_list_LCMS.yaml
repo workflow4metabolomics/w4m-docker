@@ -3,48 +3,83 @@
 api_key: admin
 galaxy_instance: http://127.0.0.1:8080/
 tools:
-- name: package_r_3_1_2
-  owner: iuc
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: package_r_camera_1_22_0
-  owner: lecorguille
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: camera_combinexsannos
-  owner: mmonsoor
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: camera_annotate
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: package_r_xcms_1_44_0
-  owner: lecorguille
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: xcms_summary
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: xcms_fillpeaks
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: xcms_retcor
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: xcms_group
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-preprocessing'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
+#LCMS-preprocessing
 - name: xcms_xcmsset
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
-- name: hca
+  install_tool_dependencies: False
+- name: xcms_group
   owner: lecorguille
-  tool_panel_section_id: 'LCMS-annotation'
+  tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_retcor
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_fillpeaks
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: camera_annotate
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: xcms_summary
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: camera_combinexsannos
+  owner: mmonsoor
+  tool_panel_section_id: 'LCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#- name: hca
+#  owner: lecorguille
+#  tool_panel_section_id: 'LCMS-statistical_analysis'
+#  tool_shed_url: https://toolshed.g2.bx.psu.edu
+#  install_tool_dependencies: False
+#LCMS-statistical_analysis
 - name: anova
   owner: lecorguille
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#LCMS-annotation
+- name: probmetab
+  owner: mmonsoor
   tool_panel_section_id: 'LCMS-annotation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: lcmsmatching
+  owner: prog
+  tool_panel_section_id: 'LCMS-annotation'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#GCMS-preprocessing
+- name: metams_rungc
+  owner: yguitton
+  tool_panel_section_id: 'GCMS-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#NMR-preprocessing
+- name: nmr_bucketing
+  owner: marie-tremblay-metatoul
+  tool_panel_section_id: 'NMR-preprocessing'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+#NMR-normalisation
+- name: nmr_normalization
+  owner: marie-tremblay-metatoul
+  tool_panel_section_id: 'NMR-normalisation'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
