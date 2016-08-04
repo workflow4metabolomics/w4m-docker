@@ -28,11 +28,10 @@ Which VM
 --------
 
 So make your choice
-- Use [Docker](#headdocker)
-- Use [Vagrant](#headvagrant)
+- Use [Docker](#docker)
+- Use [Vagrant](#vagrant)
 
 
-<a id="headdocker"></a>
 Docker
 ------
 
@@ -49,14 +48,13 @@ Get more documentations this Docker container on https://github.com/bgruening/do
 https://www.docker.com
 
 ###Make a sub-choice:
- - Use an existing image available on [Docker Hub](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/) and start from the [Step 1](#headdocker_step1)
- - From this repository a custom docker image from the [Custom Build Section](#headdocker_custom_build)
+ - Use an existing image available on [Docker Hub](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/) and start from the [Step 1](#step-1-running-the-docker-container)
+ - From this repository a custom docker image from the [Custom Build Section](#custom-build-section-building-a-custom-docker-container-from-this-repository)
 
 
-<a id="headdocker_step1"></a>
 ### Step 1: Running the Docker container
 
-If you have just build a docker image through the [Custom Build Section](#headdocker_custom_build). Omit workflow4metabolomics/ in the docker image name
+If you have just build a docker image through the [Custom Build Section](#custom-build-section-building-a-custom-docker-container-from-this-repository). Omit workflow4metabolomics/ in the docker image name
 
 #### Detached/Daemon mode
 
@@ -85,7 +83,6 @@ startup
 ```
 
 
-<a id="headdocker_step2"></a>
 ### Step 2: Use Galaxy
 
 Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
@@ -96,7 +93,6 @@ You can login as administrator of your Galaxy instance using the login admin@gal
 
 
 
-<a id="headdocker_custom_build"></a>
 ### Custom Build Section: building a custom Docker container from this repository
 
 If you want to add or remove tools from the "official" workflow4metabolomics docker container
@@ -125,10 +121,9 @@ docker images
 
 #### Running step
 
-See [Step 1](#headdocker_step1)
+See [Step 1](#step-1-running-the-docker-container)
 
 
-<a id="headvagrant"></a>
 Vagrant
 -------
 
