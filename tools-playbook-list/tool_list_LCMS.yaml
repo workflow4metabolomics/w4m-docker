@@ -85,11 +85,11 @@ tools:
 #*-normalisation
 - name: transformation
   owner: ethevenot
-  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id: 'LCMS-normalisation'
   tool_panel_section_id_alts: 
-    - 'LCMS-statistical_analysis'
-    - 'GCMS-statistical_analysis'
-    - 'NMR-statistical_analysis'
+    - 'LCMS-normalisation'
+    - 'GCMS-normalisation'
+    - 'NMR-normalisation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
 

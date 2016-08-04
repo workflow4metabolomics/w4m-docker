@@ -44,7 +44,7 @@
 
   <!-- WORKFLOW 4 LCMS TOOLS -->
 
-  <label id="LCMS-dev-label_workflow" text="LC-MS Beta" />
+  <!--<label id="LCMS-dev-label_workflow" text="LC-MS Beta" />-->
 
   <section id="LCMS-dev-formatconversion" name="Format Conversion" version="" />
   <section id="LCMS-dev-preprocessing" name="Preprocessing" version="" /> 
@@ -56,7 +56,7 @@
 
   <!-- WORKFLOW 4 GCMS TOOLS -->
 
-  <label id="GCMS-dev-label_workflow" text="GC-MS Beta" />
+  <!--<label id="GCMS-dev-label_workflow" text="GC-MS Beta" />-->
 
   <section id="GCMS-dev-formatconversion" name="Format Conversion" version="" />
   <section id="GCMS-dev-preprocessing" name="Preprocessing" version="" /> 
@@ -67,7 +67,7 @@
 
   <!-- WORKFLOW 4 NMR TOOLS -->
 
-  <label id="NMR-dev-label_workflow" text="NMR Beta" />
+  <!--<label id="NMR-dev-label_workflow" text="NMR Beta" />-->
 
   <section id="NMR-dev-formatconversion" name="Format Conversion" version="" />
   <section id="NMR-dev-preprocessing" name="Preprocessing" version="" /> 

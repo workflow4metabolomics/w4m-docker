@@ -3,7 +3,7 @@ Virtual machine for the Workflow4Metabolomics
 
 The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
 
-This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
+This project has for aim to maintain [Docker](https://www.docker.com) and [Vagrant](https://www.vagrantup.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
 
 NOTICE 
@@ -48,44 +48,15 @@ Get more documentations this Docker container on https://github.com/bgruening/do
 #### Docker
 https://www.docker.com
 
-##### For MacOS
-> Because MacOS can't launch Docker directly, you need to install the Docker Toolbox. It will launch a Linux VM to allow you to use Docker. 
-> https://docs.docker.com/engine/installation/mac/ 
-
 ###Make a sub-choice:
- - Use an existing image available on [Docker Hub](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/) and jump to the [Step 2](#headdocker_step2)
- - From this repository a custom docker image from the [Step 1](#headdocker_step1)
+ - Use an existing image available on [Docker Hub](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/) and start from the [Step 1](#headdocker_step1)
+ - From this repository a custom docker image from the [Custom Build Section](#headdocker_custom_build)
 
 
 <a id="headdocker_step1"></a>
-### Step 1: Building a custom Docker container from this repository
+### Step 1: Running the Docker container
 
-#### Installation
-
-``` {.bash}
-git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
-```
-
-
-#### Settings
-
-You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
-
-
-#### The Running step
-
-From your host:
-``` {.bash}
-docker build -t galaxy-workflow4metabolomics .
-
-# check your images
-docker images
-```
-
-<a id="headdocker_step1"></a>
-### Step 2: Running the Docker container
-
-If you have just build a docker image through the [Step 1](#headdocker_step2). Omit workflow4metabolomics/ in the docker image name
+If you have just build a docker image through the [Custom Build Section](#headdocker_custom_build). Omit workflow4metabolomics/ in the docker image name
 
 #### Detached/Daemon mode
 
@@ -114,15 +85,47 @@ startup
 ```
 
 
+<a id="headdocker_step2"></a>
+### Step 2: Use Galaxy
 
-### Step 3: Use Galaxy
-
-Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
 
 Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
 
 You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
 
+
+
+<a id="headdocker_custom_build"></a>
+### Custom Build Section: building a custom Docker container from this repository
+
+If you want to add or remove tools from the "official" workflow4metabolomics docker container
+
+#### Installation
+
+``` {.bash}
+git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
+```
+
+
+#### Settings
+
+You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
+
+
+#### The Building step
+
+From your host:
+``` {.bash}
+docker build -t galaxy-workflow4metabolomics .
+
+# check your images
+docker images
+```
+
+#### Running step
+
+See [Step 1](#headdocker_step1)
 
 
 <a id="headvagrant"></a>
