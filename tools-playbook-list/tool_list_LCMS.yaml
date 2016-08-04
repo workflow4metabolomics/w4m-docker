@@ -3,6 +3,7 @@
 api_key: admin
 galaxy_instance: http://127.0.0.1:8080/
 tools:
+## LCMS
 #LCMS-preprocessing
 - name: xcms_xcmsset
   owner: lecorguille
@@ -45,15 +46,7 @@ tools:
 #  tool_shed_url: https://toolshed.g2.bx.psu.edu
 #  install_tool_dependencies: False
 #LCMS-statistical_analysis
-- name: anova
-  owner: lecorguille
-  tool_panel_section_id: 'LCMS-statistical_analysis'
-  tool_panel_section_id_alts: 
-    - 'LCMS-statistical_analysis'
-    - 'GCMS-statistical_analysis'
-    - 'NMR-statistical_analysis'
-  tool_shed_url: https://toolshed.g2.bx.psu.edu
-  install_tool_dependencies: False
+
 #LCMS-annotation
 - name: probmetab
   owner: mmonsoor
@@ -65,12 +58,16 @@ tools:
   tool_panel_section_id: 'LCMS-annotation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+
+## GCMS
 #GCMS-preprocessing
 - name: metams_rungc
   owner: yguitton
   tool_panel_section_id: 'GCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+
+## NMR
 #NMR-preprocessing
 - name: nmr_bucketing
   owner: marie-tremblay-metatoul
@@ -81,5 +78,72 @@ tools:
 - name: nmr_normalization
   owner: marie-tremblay-metatoul
   tool_panel_section_id: 'NMR-normalisation'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+
+## COMMON
+#*-normalisation
+- name: transformation
+  owner: ethevenot
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+
+#*-statistical_analysis
+- name: anova
+  owner: lecorguille
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: heatmap
+  owner: ethevenot
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: univariate
+  owner: ethevenot
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: multivariate
+  owner: ethevenot
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+- name: biosigner
+  owner: ethevenot
+  tool_panel_section_id: 'LCMS-statistical_analysis'
+  tool_panel_section_id_alts: 
+    - 'LCMS-statistical_analysis'
+    - 'GCMS-statistical_analysis'
+    - 'NMR-statistical_analysis'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
+
+
+#W4M-Data-Handling
+- name: checkformat
+  owner: ethevenot
+  tool_panel_section_id: 'W4M-Data-Handling'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
