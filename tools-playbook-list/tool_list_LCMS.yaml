@@ -90,6 +90,14 @@ tools:
 
 ## COMMON
 #*-normalisation
+- name: batchcorrection
+  owner: melpetera
+  tool_panel_section_id: 'LCMS-normalisation'
+  tool_panel_section_id_alts: 
+    - 'LCMS-normalisation'
+    - 'GCMS-normalisation'
+  tool_shed_url: https://toolshed.g2.bx.psu.edu
+  install_tool_dependencies: False
 - name: transformation
   owner: ethevenot
   tool_panel_section_id: 'LCMS-normalisation'

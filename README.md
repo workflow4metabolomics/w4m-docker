@@ -83,6 +83,21 @@ startup
 ```
 
 
+#### MORE: FTP support and Persistent data
+
+
+``` {.bash}
+docker run -d -p 8080:80 -p 8021:21 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
+```
+
+Because Docker container are "read-only", you will lost all your changes within the container at shutdown until you ask the Galaxy instance to write in a folder mounted from the host `/home/user/galaxy_storage/` under `/export/` into the container.
+
+From a MacOX:
+> There are some issue with those two features depending on which Docker solution was chosen. See this thread: https://github.com/bgruening/docker-galaxy-stable/issues/210
+> - Docker Toolbox: the export directory works but not the FTP 
+> - Docker for Mac: the FTP works but not the export directory
+
+
 ### Step 2: Use Galaxy
 
 Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
