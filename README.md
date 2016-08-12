@@ -60,6 +60,7 @@ If you have just build a docker image through the [Custom Build Section](#custom
 
 From your host:
 ``` {.bash}
+docker pull workflow4metabolomics/galaxy-workflow4metabolomics # to update the local image version
 docker run -d -p 8080:80 workflow4metabolomics/galaxy-workflow4metabolomics
 
 # check that your docker is running
@@ -74,6 +75,7 @@ docker exec -i -t ed6031485d06 /bin/bash
 
 From your host:
 ``` {.bash}
+docker pull workflow4metabolomics/galaxy-workflow4metabolomics # to update the local image version
 docker run -i -t -p 8080:80 workflow4metabolomics/galaxy-workflow4metabolomics /bin/bash
 ```
 
