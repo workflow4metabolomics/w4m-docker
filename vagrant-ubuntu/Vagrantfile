@@ -34,10 +34,10 @@ Vagrant.configure(2) do |config|
 	config.vm.provision "file", source: "../files4galaxy/static/W4M", destination: "galaxy/static/W4M"
 
 	# Start galaxy in daemon mode
-  if ! ENV['TOOL_LIST'].nil?
-	    config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
+	config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
 
 	    # Install Galaxy tools
+  if ! ENV['TOOL_LIST'].nil?
 	    config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"4096", run: "always"
 	    config.vm.provision "ansible" do |ansible|
 		    ansible.verbose = "v"
