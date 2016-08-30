@@ -7,7 +7,7 @@
 
   <!-- WORKFLOW 4	LCMS TOOLS -->
 
-  <label id="LCMS-label_workflow" text="LC-MS" />
+  <label id="label_LCMS_workflow" text="LC-MS" />
 
   <section id="LCMS-formatconversion" name="Format Conversion" version="" />
   <section id="LCMS-preprocessing" name="Preprocessing" version="" /> 
@@ -19,7 +19,7 @@
 
   <!-- WORKFLOW 4	GCMS TOOLS -->
 
-  <label id="GCMS-label_workflow" text="GC-MS" />
+  <label id="label_GCMS_workflow" text="GC-MS" />
 
   <section id="GCMS-formatconversion" name="Format Conversion" version="" />
   <section id="GCMS-preprocessing" name="Preprocessing" version="" /> 
@@ -30,7 +30,7 @@
 
   <!-- WORKFLOW 4 NMR TOOLS -->
 
-  <label id="NMR-label_workflow" text="NMR" />
+  <label id="label_NMR_workflow" text="NMR" />
 
   <section id="NMR-formatconversion" name="Format Conversion" version="" />
   <section id="NMR-preprocessing" name="Preprocessing" version="" /> 
@@ -41,10 +41,17 @@
 
 
 
+  <!-- WORKFLOW 4 UTILS TOOLS -->
+
+  <label id="label_UTILS" text="UTILS TOOLS" />
+
+  <section id="W4M-Data-Handling" name="Data Handling" version="" />
+
+
 
   <!-- WORKFLOW 4 LCMS TOOLS -->
 
-  <label id="LCMS-dev-label_workflow" text="LC-MS Beta" />
+  <!--<label id="label_LCMS_workflow-dev" text="LC-MS Beta" />-->
 
   <section id="LCMS-dev-formatconversion" name="Format Conversion" version="" />
   <section id="LCMS-dev-preprocessing" name="Preprocessing" version="" /> 
@@ -56,7 +63,7 @@
 
   <!-- WORKFLOW 4 GCMS TOOLS -->
 
-  <label id="GCMS-dev-label_workflow" text="GC-MS Beta" />
+  <!--<label id="label_GCMS_workflow-dev" text="GC-MS Beta" />-->
 
   <section id="GCMS-dev-formatconversion" name="Format Conversion" version="" />
   <section id="GCMS-dev-preprocessing" name="Preprocessing" version="" /> 
@@ -67,7 +74,7 @@
 
   <!-- WORKFLOW 4 NMR TOOLS -->
 
-  <label id="NMR-dev-label_workflow" text="NMR Beta" />
+  <!--<label id="label_NMR_workflow-dev" text="NMR Beta" />-->
 
   <section id="NMR-dev-formatconversion" name="Format Conversion" version="" />
   <section id="NMR-dev-preprocessing" name="Preprocessing" version="" /> 
@@ -80,8 +87,6 @@
 <!-- COMMON TOOLS -->
 
  <label id="label_common" text="COMMON TOOLS" />
-
-<section id="W4M-Data-Handling" name="Data Handling" version="" />
 
  <section id="textutil" name="Text Manipulation">
     <tool file="filters/fixedValueColumn.xml" />

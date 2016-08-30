@@ -3,7 +3,7 @@ Virtual machine for the Workflow4Metabolomics
 
 The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
 
-This project has for aim to maintain [Vagrant](https://www.vagrantup.com) and [Docker](https://www.docker.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
+This project has for aim to maintain [Docker](https://www.docker.com) and [Vagrant](https://www.vagrantup.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
 
 NOTICE 
@@ -28,11 +28,119 @@ Which VM
 --------
 
 So make your choice
-- Use [Vagrant](#headvagrant)
-- Use [Docker](#headdocker)
+- Use [Docker](#docker)
+- Use [Vagrant](#vagrant)
 
 
-<a id="headvagrant"></a>
+Docker
+------
+
+### What is it?
+
+This Docker container is based on the quay.io/bgruening/galaxy:16.04 (https://github.com/bgruening/docker-galaxy-stable) as a [Galaxy flavour](https://github.com/bgruening/docker-galaxy-stable/#list-of-galaxy-flavours)
+Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
+Get more documentations this Docker container on https://github.com/bgruening/docker-galaxy-stable: [Usage to save data on this read-only system](https://github.com/bgruening/docker-galaxy-stable/#usage), [using an external Slurm cluster](https://github.com/bgruening/docker-galaxy-stable/#using-an-external-slurm-cluster), ...
+
+
+### Prerequisites
+
+#### Docker
+https://www.docker.com
+
+###Make a sub-choice:
+ - Use an existing image available on [Docker Hub](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/) and start from the [Step 1](#step-1-running-the-docker-container)
+ - From this repository a custom docker image from the [Custom Build Section](#custom-build-section-building-a-custom-docker-container-from-this-repository)
+
+
+### Step 1: Running the Docker container
+
+If you have just build a docker image through the [Custom Build Section](#custom-build-section-building-a-custom-docker-container-from-this-repository). Omit workflow4metabolomics/ in the docker image name
+
+#### Detached/Daemon mode
+
+From your host:
+``` {.bash}
+docker pull workflow4metabolomics/galaxy-workflow4metabolomics # to update the local image version
+docker run -d -p 8080:80 workflow4metabolomics/galaxy-workflow4metabolomics
+
+# check that your docker is running
+docker ps
+
+# to get a ssh connection and use bash, you need your CONTAINER ID (`docker ps`)
+docker exec -i -t ed6031485d06 /bin/bash
+
+```
+
+#### Interactive mode
+
+From your host:
+``` {.bash}
+docker pull workflow4metabolomics/galaxy-workflow4metabolomics # to update the local image version
+docker run -i -t -p 8080:80 workflow4metabolomics/galaxy-workflow4metabolomics /bin/bash
+```
+
+From the Docker image:
+``` {.bash}
+startup
+```
+
+
+#### MORE: FTP support and Persistent data
+
+
+``` {.bash}
+docker run -d -p 8080:80 -p 8021:21 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
+```
+
+Because Docker container are "read-only", you will lost all your changes within the container at shutdown until you ask the Galaxy instance to write in a folder mounted from the host `/home/user/galaxy_storage/` under `/export/` into the container.
+
+From a MacOX:
+> There are some issue with those two features depending on which Docker solution was chosen. See this thread: https://github.com/bgruening/docker-galaxy-stable/issues/210
+> - Docker Toolbox: the export directory works but not the FTP 
+> - Docker for Mac: the FTP works but not the export directory
+
+
+### Step 2: Use Galaxy
+
+Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
+
+Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
+
+You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
+
+
+
+### Custom Build Section: building a custom Docker container from this repository
+
+If you want to add or remove tools from the "official" workflow4metabolomics docker container
+
+#### Installation
+
+``` {.bash}
+git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
+```
+
+
+#### Settings
+
+You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
+
+
+#### The Building step
+
+From your host:
+``` {.bash}
+docker build -t galaxy-workflow4metabolomics .
+
+# check your images
+docker images
+```
+
+#### Running step
+
+See [Step 1](#step-1-running-the-docker-container)
+
+
 Vagrant
 -------
 
@@ -61,7 +169,7 @@ pip install ansible
 ### Installation
 
 ``` {.bash}
-git clone --recursive git@github.com:lecorguille/w4m-vm.git
+git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
 ```
 
 
@@ -129,108 +237,6 @@ sh manage_db.sh upgrade
 ```
 
 
-
-<a id="headdocker"></a>
-Docker
-------
-
-### What is it?
-
-This Docker container is based on the quay.io/bgruening/galaxy:16.04 (https://github.com/bgruening/docker-galaxy-stable) as a [Galaxy flavour](https://github.com/bgruening/docker-galaxy-stable/#list-of-galaxy-flavours)
-Nested in this Docker image, the script [install_tools_wrapper.sh](https://github.com/bgruening/docker-galaxy-stable/blob/master/galaxy/install_tools_wrapper.sh) will install tools from ToolSheds using Ansible roles provided by the Galaxy project (https://github.com/galaxyproject/ansible-galaxy-tools)
-Get more documentations this Docker container on https://github.com/bgruening/docker-galaxy-stable: [Usage to save data on this read-only system](https://github.com/bgruening/docker-galaxy-stable/#usage), [using an external Slurm cluster](https://github.com/bgruening/docker-galaxy-stable/#using-an-external-slurm-cluster), ...
-
-
-### Prerequisites
-
-#### Docker
-https://www.docker.com
-
-##### For MacOS
-> Because MacOS can't launch Docker directly, you need to install the Docker Toolbox. It will launch a Linux VM to allow you to use Docker. 
-> https://docs.docker.com/engine/installation/mac/ 
-
-###Make a sub-choice:
- - Use an existing image available on [Docker Hub](https://hub.docker.com/r/lecorguille/galaxy-workflow4metabolomics/) and jump to the [Step 2](#headdocker_step2)
- - From this repository a custom docker image from the [Step 1](#headdocker_step1)
-
-
-<a id="headdocker_step1"></a>
-### Step 1: Building a custom Docker container from this repository
-
-#### Installation
-
-``` {.bash}
-git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
-```
-
-
-#### Settings
-
-You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
-
-
-#### The Running step
-
-##### For MacOS
-> Because MacOS can't launch Docker directly, you need to launch a Linux VM.
-> Launch the "[Docker Quickstart Terminal](https://docs.docker.com/engine/installation/mac/#from-the-docker-quickstart-terminal)" application
-
-
-From your host:
-``` {.bash}
-docker build -t galaxy-workflow4metabolomics .
-
-# check your images
-docker images
-```
-
-<a id="headdocker_step1"></a>
-### Step 2: Running the Docker container
-
-If you have just build a docker image through the [Step 1](#headdocker_step2). Omit lecorguille/ in the docker image name
-
-#### Detached/Daemon mode
-
-From your host:
-``` {.bash}
-docker run -d -p 8080:80 lecorguille/galaxy-workflow4metabolomics
-
-# check that your docker is running
-docker ps
-
-# to get a ssh connection and use bash, you need your CONTAINER ID (`docker ps`)
-docker exec -i -t ed6031485d06 /bin/bash
-
-```
-
-#### Interactive mode
-
-From your host:
-``` {.bash}
-docker run -i -t -p 8080:80 lecorguille/galaxy-workflow4metabolomics /bin/bash
-```
-
-From the Docker image:
-``` {.bash}
-startup
-```
-
-
-
-### Step 3: Use Galaxy
-
-Finally, you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
-
-Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
-
-You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
-
-##### For MacOS
-> Instead of "localhost", you need to use the Linux VM IP address.
-> ``` {.bash}
-> docker-machine ip default
-> ```
 
 
 
