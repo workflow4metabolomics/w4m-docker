@@ -15,7 +15,7 @@
 #    galaxy_mutable_data_dir: /var/opt/galaxy/data
 #    galaxy_repo: https://bitbucket.org/galaxy/galaxy-central/
 #    galaxy_repo: https://github.com/galaxyproject/galaxy
-    galaxy_changeset_id: release_16.04
+    galaxy_changeset_id: release_16.07
     galaxy_config:
       "server:main":
         "host": "0.0.0.0"
