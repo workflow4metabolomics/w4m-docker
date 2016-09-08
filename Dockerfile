@@ -1,15 +1,15 @@
 # Galaxy - W4M
 #
-# VERSION       2.5.1.3
+# VERSION       2.5.1.4
 
-FROM quay.io/bgruening/galaxy:16.04
+FROM quay.io/bgruening/galaxy:16.07
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
-RUN apt-get update && \
-    apt-get install -y --force-yes nginx-extras=1.4.6-1ubuntu3.4ppa1 nginx-common=1.4.6-1ubuntu3.4ppa1  && \
-    apt-get purge -y software-properties-common && \
-    apt-get autoremove -y && apt-get clean
+#RUN apt-get update && \
+#    apt-get install -y --force-yes nginx-extras=1.4.6-1ubuntu3.4ppa1 nginx-common=1.4.6-1ubuntu3.4ppa1  && \
+#    apt-get purge -y software-properties-common && \
+#    apt-get autoremove -y && apt-get clean
 
 #RUN ln -s /export/galaxy-central/tool_deps/ /td
 
