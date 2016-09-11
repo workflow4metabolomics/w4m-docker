@@ -10,41 +10,49 @@ tools:
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: xcms_group
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: xcms_retcor
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: xcms_fillpeaks
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: camera_annotate
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: xcms_summary
   owner: lecorguille
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: camera_combinexsannos
   owner: mmonsoor
   tool_panel_section_id: 'LCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 #- name: hca
 #  owner: lecorguille
 #  tool_panel_section_id: 'LCMS-statistical_analysis'
 #  tool_shed_url: https://toolshed.g2.bx.psu.edu
 #  install_tool_dependencies: False
+#  install_resolver_dependencies: True
 #LCMS-statistical_analysis
 
 #LCMS-quality_control
@@ -53,6 +61,7 @@ tools:
   tool_panel_section_id: 'LCMS-quality_control'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 #LCMS-annotation
 - name: probmetab
@@ -60,11 +69,13 @@ tools:
   tool_panel_section_id: 'LCMS-annotation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: lcmsmatching
   owner: prog
   tool_panel_section_id: 'LCMS-annotation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 ## GCMS
 #GCMS-preprocessing
@@ -73,6 +84,7 @@ tools:
   tool_panel_section_id: 'GCMS-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 ## NMR
 #NMR-preprocessing
@@ -81,12 +93,14 @@ tools:
   tool_panel_section_id: 'NMR-preprocessing'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 #NMR-normalisation
 - name: nmr_normalization
   owner: marie-tremblay-metatoul
   tool_panel_section_id: 'NMR-normalisation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 ## COMMON
 #*-normalisation
@@ -98,6 +112,7 @@ tools:
     - 'GCMS-normalisation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: transformation
   owner: ethevenot
   tool_panel_section_id: 'LCMS-normalisation'
@@ -107,6 +122,7 @@ tools:
     - 'NMR-normalisation'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 #*-statistical_analysis
 - name: anova
@@ -118,6 +134,7 @@ tools:
     - 'NMR-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: heatmap
   owner: ethevenot
   tool_panel_section_id: 'LCMS-statistical_analysis'
@@ -127,6 +144,7 @@ tools:
     - 'NMR-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: univariate
   owner: ethevenot
   tool_panel_section_id: 'LCMS-statistical_analysis'
@@ -136,6 +154,7 @@ tools:
     - 'NMR-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: multivariate
   owner: ethevenot
   tool_panel_section_id: 'LCMS-statistical_analysis'
@@ -145,6 +164,7 @@ tools:
     - 'NMR-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 - name: biosigner
   owner: ethevenot
   tool_panel_section_id: 'LCMS-statistical_analysis'
@@ -154,6 +174,7 @@ tools:
     - 'NMR-statistical_analysis'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
 
 
 #W4M-Data-Handling
@@ -162,3 +183,4 @@ tools:
   tool_panel_section_id: 'W4M-Data-Handling'
   tool_shed_url: https://toolshed.g2.bx.psu.edu
   install_tool_dependencies: False
+  install_resolver_dependencies: True
