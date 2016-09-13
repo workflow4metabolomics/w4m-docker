@@ -21,7 +21,6 @@ Dependencies using Conda
 [![bioconda-badge](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io) 
 
 [Conda](http://conda.pydata.org/) is package manager that among many other things can be used to manage Python packages. It is becoming the default dependency manager within Galaxy.
-NOTE: that Galaxy will install the Conda dependencies just before the first run of the tool which need them (even the upload tool is concerned). So it may take a few minute before the job will be launched. The other time, they will start immediatly. 
 
 
 Which VM
@@ -89,22 +88,20 @@ startup
 
 
 ``` {.bash}
-docker run -d -p 8080:80 -p 8021:21 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
+docker run -d -p 8080:80 -p 8021:21 -p 8022:22 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
 ```
 
 Because Docker container are "read-only", you will lost all your changes within the container at shutdown until you ask the Galaxy instance to write in a folder mounted from the host `/home/user/galaxy_storage/` under `/export/` into the container.
 
 From a MacOX:
 > There are some issue with those two features depending on which Docker solution was chosen. See this thread: https://github.com/bgruening/docker-galaxy-stable/issues/210
-> - Docker Toolbox: the export directory works but not the FTP 
-> - Docker for Mac: the FTP works but not the export directory
+> - Docker for Mac: the export directory works and the SFTP too using Filezilla but not the FTP 
+> - Docker Toolbox: the FTP works but not the export directory
 
 
 ### Step 2: Use Galaxy
 
 Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
-
-Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
 
 You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
 
@@ -226,7 +223,6 @@ ssh -Y vagrant@127.0.0.1 -p 2222
 You can monitor the tools installation:
 
 1. Register in <http://localhost:8080/> a user named admin@w4m.org
-2. Check the progression: Admin -> Monitor installing repositories
 
 ### Troubleshooting
 
