@@ -25,7 +25,7 @@ Galaxy is an open, web-based platform for data intensive biomedical research. Wh
 Homepage: [https://galaxyproject.org/](https://galaxyproject.org/)
 
 
-![workflow](https://raw.githubusercontent.com/workflow4metabolomics/workflow4metabolomics/master/images/workflow_all_HD_color_2.0.pngg)
+![workflow](https://raw.githubusercontent.com/workflow4metabolomics/workflow4metabolomics/master/images/workflow_all_HD_color_2.0.png)
 
 
 The Virtual machine project
