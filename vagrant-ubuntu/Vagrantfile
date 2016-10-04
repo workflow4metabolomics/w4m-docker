@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
 	    config.vm.provision "ansible" do |ansible|
 		    ansible.verbose = "v"
 		    ansible.extra_vars = { 
-    	      "galaxy_tools_tool_list" => ENV['TOOL_LIST'], 
+    	      "tool_list_file" => ENV['TOOL_LIST'], 
     	    }
 		    ansible.playbook = "tools.yml"	
 	    end
