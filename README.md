@@ -1,7 +1,35 @@
+[![Docker Automated buil](https://img.shields.io/docker/automated/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
+[![Docker Stars](https://img.shields.io/docker/stars/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
+[![Build Status](https://travis-ci.org/workflow4metabolomics/w4m-vm.svg?branch=travis)](https://travis-ci.org/workflow4metabolomics/w4m-vm)
+
+![workflow](https://raw.githubusercontent.com/workflow4metabolomics/workflow4metabolomics/master/images/logo/logo-ifb-mono-metabohub_2.1_SD_150px.png)
+
 Virtual machine for the Workflow4Metabolomics
 =============================================
 
+Our project
+-----------
 The [Workflow4Metabolomics](http://workflow4metabolomics.org), W4M in short, is a French infrastructure offering software tool processing, analyzing and annotating metabolomics data. It is based on the Galaxy platform.
+
+In the context of collaboration between metabolomics ([MetaboHUB French infrastructure](http://www.metabohub.fr/index.php?lang=fr)) and bioinformatics platforms ([IFB: Institut Français de Bioinformatique](http://www.france-bioinformatique.fr/en)), we have developed full LC/MS, GC/MS and NMR pipelines using Galaxy framework for data analysis including preprocessing, normalization, quality control, statistical analysis and annotation steps. Those modular and extensible workflows are composed with existing components (XCMS and CAMERA packages, etc.) but also a whole suite of complementary homemade tools. This implementation is accessible through a web interface, which guarantees the parameters completeness. The advanced features of Galaxy have made possible the integration of components from different sources and of different types. Thus, an extensible Virtual Research Environment (VRE) is offered to metabolomics communities (platforms, end users, etc.), and enables preconfigured workflows sharing for new users, but also experts in the field.
+
+Citation
+--------
+Giacomoni F., Le Corguillé G., Monsoor M., Landi M., Pericard P., Pétéra M., Duperier C., Tremblay-Franco M., Martin J.-F., Jacob D., Goulitquer S., Thévenot E.A. and Caron C. (2014). Workflow4Metabolomics: A collaborative research infrastructure for computational metabolomics. Bioinformatics, [http://dx.doi.org/10.1093/bioinformatics/btu813](http://dx.doi.org/10.1093/bioinformatics/btu813)
+
+Galaxy
+------
+Galaxy is an open, web-based platform for data intensive biomedical research. Whether on the free public server or your own instance, you can perform, reproduce, and share complete analyses. 
+
+Homepage: [https://galaxyproject.org/](https://galaxyproject.org/)
+
+
+![workflow](https://raw.githubusercontent.com/workflow4metabolomics/workflow4metabolomics/master/images/workflow_all_HD_color_2.0.png)
+
+
+The Virtual machine project
+===========================
 
 This project has for aim to maintain [Docker](https://www.docker.com) and [Vagrant](https://www.vagrantup.com) files capable of building a full virtual machine running [Galaxy](https://galaxyproject.org) and an instance of the [Workflow4Metabolomics](http://workflow4metabolomics.org).
 
@@ -21,7 +49,6 @@ Dependencies using Conda
 [![bioconda-badge](https://img.shields.io/badge/install%20with-bioconda-brightgreen.svg?style=flat)](http://bioconda.github.io) 
 
 [Conda](http://conda.pydata.org/) is package manager that among many other things can be used to manage Python packages. It is becoming the default dependency manager within Galaxy.
-NOTE: that Galaxy will install the Conda dependencies just before the first run of the tool which need them (even the upload tool is concerned). So it may take a few minute before the job will be launched. The other time, they will start immediatly. 
 
 
 Which VM
@@ -89,22 +116,20 @@ startup
 
 
 ``` {.bash}
-docker run -d -p 8080:80 -p 8021:21 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
+docker run -d -p 8080:80 -p 8021:21 -p 8022:22 -v /home/user/galaxy_storage/:/export/ workflow4metabolomics/galaxy-workflow4metabolomics
 ```
 
 Because Docker container are "read-only", you will lost all your changes within the container at shutdown until you ask the Galaxy instance to write in a folder mounted from the host `/home/user/galaxy_storage/` under `/export/` into the container.
 
 From a MacOX:
 > There are some issue with those two features depending on which Docker solution was chosen. See this thread: https://github.com/bgruening/docker-galaxy-stable/issues/210
-> - Docker Toolbox: the export directory works but not the FTP 
-> - Docker for Mac: the FTP works but not the export directory
+> - Docker for Mac: the export directory works and the SFTP too using Filezilla but not the FTP 
+> - Docker Toolbox: the FTP works but not the export directory
 
 
 ### Step 2: Use Galaxy
 
 Finally, after maybe a couple of minute (dependeing of your machine), you can connect to the Galaxy portal from a browser running on your host: <http://localhost:8080/>.
-
-Since we use conda to manage the dependencies, the first time you launch a tool, Galaxy will install using conda the tool dependencies. This step can take a few minutes. Keep cool!
 
 You can login as administrator of your Galaxy instance using the login admin@galaxy.org and the password admin
 
@@ -226,7 +251,6 @@ ssh -Y vagrant@127.0.0.1 -p 2222
 You can monitor the tools installation:
 
 1. Register in <http://localhost:8080/> a user named admin@w4m.org
-2. Check the progression: Admin -> Monitor installing repositories
 
 ### Troubleshooting
 
