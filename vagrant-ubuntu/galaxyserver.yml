@@ -32,7 +32,7 @@
   pre_tasks:
     - name: Install Debian prerequisites
       apt: pkg={{ item }} state=installed
-      sudo: yes
+      become: yes
       when: ansible_os_family == 'Debian'
       with_items:
         - git
@@ -41,7 +41,7 @@
         - unzip # Gi: R need it to extract archive -> TODO: build a Galaxy package
     - name: Install RedHat prerequisites
       yum: pkg={{ item }} state=installed
-      sudo: yes
+      become: yes
       when: ansible_os_family == 'RedHat'
       with_items:
         - git
@@ -50,4 +50,4 @@
         - unzip # Gi: R need it to extract archive -> TODO: build a Galaxy package
   roles:
     - role: ../roles/ansible-galaxy
-      sudo: no 
+      become: no 
