@@ -95,7 +95,11 @@ docker ps
 
 # to get a ssh connection and use bash, you need your CONTAINER ID (`docker ps`)
 docker exec -i -t ed6031485d06 /bin/bash
+```
 
+Remark: on macOS, since you use `docker-machine` to run `docker`, you need to allow port forwarding on your `docker-machine` instance so the docker container port is forwarded to your host machine. For this you have to run the following command:
+```bash
+docker-machine ssh your_docker_machine_name -f -N -L 8080:localhost:8080
 ```
 
 #### Interactive mode
