@@ -152,7 +152,7 @@ git clone --recursive git@github.com:workflow4metabolomics/w4m-vm.git
 
 #### Settings
 
-You can change the tools you want to be installed in tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml
+You can change the tools you want to be installed in `tools-playbook-list/docker-ubuntu/tool_list_LCMS.yaml`.
 
 
 #### The Building step
@@ -168,7 +168,6 @@ docker images
 #### Running step
 
 See [Step 1](#step-1-running-the-docker-container)
-
 
 Vagrant
 -------
