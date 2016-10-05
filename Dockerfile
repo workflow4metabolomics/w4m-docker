@@ -16,6 +16,10 @@ ADD files4galaxy/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
 
 # Install Tools
 ADD tools-playbook-list/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
+RUN ls -l $GALAXY_ROOT/config/tool_conf.xml
+RUN which install-tools
+RUN ls -l `which install-tools`
+RUN whoami
 RUN install-tools $GALAXY_ROOT/tools.yaml
 
 # Duplicate tools in the tools panel
