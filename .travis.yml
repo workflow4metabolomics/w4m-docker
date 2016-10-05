@@ -13,6 +13,9 @@ git:
   submodules: false
 
 before_install:
+  - pwd
+  - df -h
+  - quota
   - wget https://raw.githubusercontent.com/bgruening/galaxy-flavor-testing/master/Makefile
   - make docker_install
   - travis_wait 45 make docker_build
