@@ -16,7 +16,7 @@ ADD files4galaxy/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
 
 # Install Tools
 ADD tools-playbook-list/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
-RUN install-tools $GALAXY_ROOT/tools.yaml
+RUN install-tools $GALAXY_ROOT/tools.yaml && $GALAXY_CONDA_PREFIX/bin/conda clean --tarballs -y
 
 # Duplicate tools in the tools panel
 ADD galaxy_utils/galaxy_duplicate_tools.py $GALAXY_ROOT/galaxy_duplicate_tools.py
