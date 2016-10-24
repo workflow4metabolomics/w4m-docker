@@ -1,6 +1,10 @@
 # -*- mode: ruby -*-
 # vi: ft=ruby ts=2 et
 
+def envvar_enabled(var)
+  ! ENV[var].nil? and ['true', 'yes'].include? ENV[var].downcase
+end
+
 Vagrant.configure(2) do |config|
 
   # Box
@@ -13,13 +17,13 @@ Vagrant.configure(2) do |config|
   # Set virtual memory
   config.vm.provider "virtualbox" do |vb|
       vb.memory = "2048"
-      vb.gui = ! ENV['ENABLE_GUI'].nil?
+      vb.gui = envvar_enabled('ENABLE_GUI')
   end
   
   #config.vm.provision "docker"
   
   # Set AZERTY keyboard layout
-  if ! ENV['ENABLE_AZERTY'].nil?
+  if envvar_enabled('ENABLE_AZERTY')
     config.vm.provision :shell, privileged: true, path: "vagrant-azerty.sh"
   end
   
@@ -43,7 +47,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :shell, privileged: false, path: "vagrant-run-galaxy.sh", args:"start", run: "always"
 
   # Install Galaxy tools
-  if ! ENV['TOOL_LIST'].nil?
+  if envvar_enabled('TOOL_LIST')
       config.vm.provision :shell, privileged: true, path: "swap_create.sh", args:"4096", run: "always"
       config.vm.provision "ansible" do |ansible|
         ansible.verbose = "v"
