@@ -1,8 +1,8 @@
 # Galaxy - W4M
 #
-# VERSION       2.5.1.4
+# VERSION       2.5.2.0-17.01
 
-FROM quay.io/bgruening/galaxy:16.07
+FROM quay.io/bgruening/galaxy:17.01
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
@@ -11,11 +11,11 @@ ENV GALAXY_CONFIG_BRAND=Workflow4Metabolomics \
     GALAXY_CONFIG_CONDA_AUTO_INSTALL=True
 
 # Add config files
-ADD files4galaxy/config/tool_conf.xml $GALAXY_ROOT/config/
-ADD files4galaxy/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
+ADD w4m-config/files4galaxy/config/tool_conf.xml $GALAXY_ROOT/config/
+ADD w4m-config/files4galaxy/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
 
 # Install Tools
-ADD tools-playbook-list/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
+ADD w4m-config/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
 RUN install-tools $GALAXY_ROOT/tools.yaml && $GALAXY_CONDA_PREFIX/bin/conda clean --tarballs -y
 
 # Duplicate tools in the tools panel
@@ -23,8 +23,8 @@ ADD galaxy_utils/galaxy_duplicate_tools.py $GALAXY_ROOT/galaxy_duplicate_tools.p
 RUN $GALAXY_ROOT/galaxy_duplicate_tools.py $GALAXY_ROOT/tools.yaml $GALAXY_ROOT/config/shed_tool_conf.xml -i
 
 # Add the static welcome page
-ADD files4galaxy/static/welcome.html /etc/galaxy/web/
-ADD files4galaxy/static/W4M/ /etc/galaxy/web/W4M/
+ADD w4m-config/static/welcome.html /etc/galaxy/web/
+ADD w4m-config/static/W4M/ /etc/galaxy/web/W4M/
 
 # Mark folders as imported from the host.
 VOLUME ["/export/", "/data/", "/var/lib/docker"]
