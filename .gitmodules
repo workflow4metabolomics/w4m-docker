@@ -10,3 +10,6 @@
 	path = galaxy_utils
 	url = https://github.com/lecorguille/galaxy_utils.git
 	barnch = master
+[submodule "w4m-config"]
+	path = w4m-config
+	url = https://github.com/workflow4metabolomics/w4m-config.git
