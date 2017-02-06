@@ -2,21 +2,22 @@
 #
 # VERSION       2.5.2.0-17.01
 
-FROM quay.io/bgruening/galaxy:17.01
+#FROM quay.io/bgruening/galaxy:jmc_conda
+FROM quay.io/bgruening/galaxy:release_17.01
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
 ENV GALAXY_CONFIG_BRAND=Workflow4Metabolomics \
-    GALAXY_CONFIG_CONDA_AUTO_INIT=True \
-    GALAXY_CONFIG_CONDA_AUTO_INSTALL=True
+    GALAXY_CONFIG_CONDA_AUTO_INSTALL=True \
+    GALAXY_CONFIG_CONDA_AUTO_INIT=True
 
 # Add config files
-ADD w4m-config/files4galaxy/config/tool_conf.xml $GALAXY_ROOT/config/
-ADD w4m-config/files4galaxy/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
+ADD w4m-config/config/tool_conf.xml $GALAXY_ROOT/config/
+ADD w4m-config/config/dependency_resolvers_conf.xml $GALAXY_ROOT/config/
 
 # Install Tools
 ADD w4m-config/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
-RUN install-tools $GALAXY_ROOT/tools.yaml && $GALAXY_CONDA_PREFIX/bin/conda clean --tarballs -y
+RUN install-tools $GALAXY_ROOT/tools.yaml
 
 # Duplicate tools in the tools panel
 ADD galaxy_utils/galaxy_duplicate_tools.py $GALAXY_ROOT/galaxy_duplicate_tools.py
