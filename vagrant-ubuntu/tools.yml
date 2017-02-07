@@ -1,8 +1,0 @@
-#- hosts: localhost
-- hosts: all
-  gather_facts: False
-  connection: local
-  vars:
-      galaxy_tools_api_key:  admin
-  roles:
-      - ../roles/ansible-galaxy-tools
