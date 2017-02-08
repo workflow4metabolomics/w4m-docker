@@ -13,4 +13,4 @@
 [submodule "w4m-config"]
 	path = w4m-config
 	url = https://github.com/workflow4metabolomics/w4m-config.git
-	branch = master
+	branch = latest
