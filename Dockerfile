@@ -20,8 +20,8 @@ ADD w4m-config/tool_list_LCMS.yaml $GALAXY_ROOT/tools.yaml
 RUN install-tools $GALAXY_ROOT/tools.yaml
 
 # Duplicate tools in the tools panel
-ADD galaxy_utils/galaxy_duplicate_tools.py $GALAXY_ROOT/galaxy_duplicate_tools.py
-RUN $GALAXY_ROOT/galaxy_duplicate_tools.py $GALAXY_ROOT/tools.yaml $GALAXY_ROOT/config/shed_tool_conf.xml -i
+#ADD galaxy_utils/galaxy_duplicate_tools.py $GALAXY_ROOT/galaxy_duplicate_tools.py
+#RUN $GALAXY_ROOT/galaxy_duplicate_tools.py $GALAXY_ROOT/tools.yaml $GALAXY_ROOT/config/shed_tool_conf.xml -i
 
 # Add the static welcome page
 ADD w4m-config/static/welcome.html /etc/galaxy/web/
