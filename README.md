@@ -1,7 +1,9 @@
 [![Docker Automated buil](https://img.shields.io/docker/automated/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
 [![Docker Pulls](https://img.shields.io/docker/pulls/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
 [![Docker Stars](https://img.shields.io/docker/stars/workflow4metabolomics/galaxy-workflow4metabolomics.svg?maxAge=2592000)](https://hub.docker.com/r/workflow4metabolomics/galaxy-workflow4metabolomics/)
-[![Build Status](https://travis-ci.org/workflow4metabolomics/w4m-docker.svg?branch=travis)](https://travis-ci.org/workflow4metabolomics/w4m-docker)
+
+Master: [![Build Status](https://travis-ci.org/workflow4metabolomics/w4m-docker.svg?branch=master)](https://travis-ci.org/workflow4metabolomics/w4m-docker)
+Beta: [![Build Status](https://travis-ci.org/workflow4metabolomics/w4m-docker.svg?branch=beta)](https://travis-ci.org/workflow4metabolomics/w4m-docker)
 
 ![workflow](https://raw.githubusercontent.com/workflow4metabolomics/workflow4metabolomics/master/images/logo/logo-ifb-mono-metabohub_2.1_SD_150px.png)
 
