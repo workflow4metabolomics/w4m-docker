@@ -2,7 +2,7 @@
 #
 # VERSION       3.2.0-18.05
 
-FROM bgruening/galaxy-stable
+FROM bgruening/galaxy-stable:19.01
 
 MAINTAINER Gildas Le Corguillé, lecorguille@sb-roscoff.fr
 
